@@ -12,6 +12,7 @@ body{
     font-family: 'Roboto', sans-serif;
     background-color: #101214;
     color: #7A7C80;
+    margin-bottom: 50px;
 
 }
 ul {
@@ -124,5 +125,8 @@ a{
     }
     .section-2 p{
         font-size: 14px !important;
+    }
+    .section-2 .dates{
+        font-size: 10px !important;
     }
 }
