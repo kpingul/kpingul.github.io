@@ -61,7 +61,7 @@ a{
     font-size: 1.3rem !important;
     margin-bottom: 2px;
     font-weight: 200;
-    letter-spacing: .025em;
+    letter-spacing: .05em;
 }
 
 .section-1 a{
@@ -75,7 +75,7 @@ a{
 }
 
 .section-2 h2{
-    font-size: 1rem !important;
+    font-size: 1.1rem !important;
     font-weight: 200;
     margin-bottom: 10px;
 }
@@ -95,13 +95,18 @@ a{
 }
 /* animations / utilities */
 .section-2 a:hover{
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: #fff;
     cursor: pointer;
     transition: 0.2s;
 }
 
 .section-1 a:hover{
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.section-1 i:hover{
     color: #fff;
     cursor: pointer;
     transition: 0.3s;
