@@ -7,7 +7,9 @@
     display: grid;
     grid-template-columns: repeat(2,1fr);
 }
-
+img {
+    width: 100%;
+}
 body{
     margin: 0;
     padding: 0;
@@ -15,7 +17,7 @@ body{
     font-family: 'Nimbus Sans L', sans-serif;
 
     
-    background-color: #101214;
+    background-color: #a7a7a7;
     color: #7A7C80;
     margin-bottom: 50px;
 }
@@ -27,7 +29,7 @@ ul {
 ul li {
     display: inline-block;
     padding: 5px 10px;
-    background: #fffbfb24;
+    
     /* width: 56%; */
     border-radius: 50px;
     color: white;
@@ -35,7 +37,7 @@ ul li {
     font-size: 12px;
 }
 h2,.white{
-    color: #fff;
+    color: #4b4b4b;
 }
 h2{
     font-size: 20px !important;
@@ -96,18 +98,18 @@ a{
 /* animations / utilities */
 .section-2 a:hover{
     font-size: 1.1rem;
-    color: #fff;
+    color: #4b4b4b;
     cursor: pointer;
     transition: 0.2s;
 }
 
 .section-1 a:hover{
-    color: #fff;
+    color: #4b4b4b;
     cursor: pointer;
     transition: 0.3s;
 }
 .section-1 i:hover{
-    color: #fff;
+    color: #4b4b4b;
     cursor: pointer;
     transition: 0.3s;
 }
