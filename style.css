@@ -18,7 +18,7 @@ body{
 
     
     background-color: #a7a7a7;
-    color: #6d6d6d;
+    color: #585656;
     margin-bottom: 50px;
 }
 ul {
@@ -44,7 +44,7 @@ h2{
 }
 
 a{
-    color: #6d6d6d;
+    color: #585656;
     text-decoration: none;
 }
 /* section 1 */
@@ -52,7 +52,9 @@ a{
     padding-top: 30vh;
     text-align: center;
 }
-
+p{
+    line-height: 1.4;
+}
 .section-1 p{
     font-size: 1.1rem;
     padding-bottom: 10px;
