@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../style.css">
+    <title>Kirck Pingul</title>
+</head>
+<body>
+    <div class="grid-2">
+        <div class="section-1">
+            <h2>
+                <a href="/" style="color: #4b4b4b; font-size: 1.6rem;">
+                    kirck pingul
+                </a>
+            </h2>
+            
+            <a href="https://www.twitter.com/kirckp" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.github.com/kpingul" target="_blank" class="fab fa-github"></i></a>
+            <a href="https://infosec.exchange/@kirckp" target="_blank"><i class="fab fa-mastodon"></i></a>
+        </div>
+        <div class="section-2">
+            <h2 style="margin-bottom: 0px; font-weight: bold; font-size:1.25rem !important" >Tripwire: Leveraging Intruder Tactics</h2>
+            <p style="margin-top: 15px;">
+                Tripwire was a project I developed that was inspired by how attackers operate, particularly their tendency to move laterally within a network environment. These malicious actors are constantly on the prowl, looking for valuable data such as credentials and personally identifiable information (PII). This relentless pursuit often leads them to move within an organization's network, trying various paths and methods to gain access to the desired information​. The tool is designed to work on Windows 8/8.1/10 platforms and requires Go version 1.17.6+ for installation​.
+            </p>
+
+            <p>
+                What makes Tripwire unique is its approach to tackling this problem. Instead of focusing solely on preventing these intrusions, it aims to use these actions against the attackers themselves. The tool achieves this by creating "tripwires" - essentially decoys that look like valuable targets for an attacker. These tripwires can be customised to mimic different types of data like PII, credit card information, or credentials. When an attacker interacts with one of these decoys, the tool logs this interaction, providing valuable information about the attack​.
+            </p>
+    
+
+            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                The Tripwire Visualizer
+            </p>
+            <p>
+            
+                The Tripwire Visualizer provides a visual representation of potential security breaches, showing the movements of rogue users within a network. This can be incredibly valuable for Incident Response (IR) and Security Operations Center (SOC) teams, as it can provide visual evidence that can be used in further investigations​ as shown below.
+            </p>
+            <img src="./../images/tripwire.png" />
+
+            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                How Red and Blue Teams Can Benefit
+            </p>
+            <p>
+                <b>Red Teams</b>
+            </p>
+            <p>
+                For red teams, who are tasked with testing an organization's defenses, Tripwire can be an excellent tool for understanding potential vulnerabilities within a system. By planting tripwires (decoys) and monitoring how they are accessed, red teams can simulate the actions of an attacker. The visualizer can help to demonstrate the paths an attacker might take, highlighting areas where defenses could be improved.
+
+            </p>
+            <p>
+                <b>Blue Teams</b>
+            </p>
+
+            <p>
+                Blue teams, who focus on defending against attacks, can also benefit significantly from Tripwire. By planting tripwires and setting up alerts for unauthorized access, blue teams can identify potential security breaches early on. The additional context provided by windows event logs can be incredibly valuable in investigations, offering insights into which process was involved in accessing the file, the account used, and the domain they are in​.
+            </p>
+
+            <p>
+                <b>Conclusion</b>
+            </p>
+            <p>
+                Though it's in its early stages and considered a POC, Tripwire shows a lot of promise as a tool for both red and blue teams in the world of infosec. As the project continues to evolve, it will be exciting to see the impact it has on the field of endpoint security.
+            </p>
+
+        
+        </div>
+    </div>
+</body>
+</html>
