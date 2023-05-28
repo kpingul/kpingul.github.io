@@ -23,14 +23,23 @@
         </div>
         <div class="section-2">
             <h2 style="margin-bottom: 0px; font-weight: bold; font-size:1.25rem !important" >Tripwire: Leveraging Intruder Tactics</h2>
+            <a href="https://github.com/kpingul/tripwire" style="text-decoration: underline; color: #1463b0 !important" target="_blank">
+                Link to Project on GitHub
+            </a>
             <p style="margin-top: 15px;">
-                Tripwire was a project I developed that was inspired by how attackers operate, particularly their tendency to move laterally within a network environment. These malicious actors are constantly on the prowl, looking for valuable data such as credentials and personally identifiable information (PII). This relentless pursuit often leads them to move within an organization's network, trying various paths and methods to gain access to the desired information​.
+                Tripwire was a project I developed, informed by the sophisticated strategies of cyber adversaries as described in the <a href="https://attack.mitre.org/" style="text-decoration: underline; color: #1463b0 !important;padding: 0;display: initial;" target="_blank">MITRE ATT&CK</a> framework. The ATT&CK matrix presents a comprehensive view of the life cycle of a cyber attack, including initial reconnaissance, intrusion into the network, establishment of a foothold, lateral movement, and eventually, data exfiltration.
+                
             </p>
-
             <p>
-                What makes Tripwire unique is its approach to tackling this problem. Instead of focusing solely on preventing these intrusions, it aims to use these actions against the attackers themselves. The tool achieves this by creating "tripwires" - essentially decoys that look like valuable targets for an attacker. These tripwires can be customised to mimic different types of data like PII, credit card information, or credentials. When an attacker interacts with one of these decoys, the tool logs this interaction, providing valuable information about the attack​. 
-                
-                
+                Adversaries, as described in the ATT&CK matrix, are constantly on the prowl for valuable data such as credentials and personally identifiable information (PII). Their initial reconnaissance often includes scanning for system vulnerabilities or spear phishing attacks to gain an initial foothold. Once inside, they establish persistence and begin to move laterally within the network, trying various paths and methods to gain access to the desired information. This lateral movement often involves techniques like Pass the Hash or Pass the Ticket, exploiting legitimate credentials to access further systems.
+            </p>
+            <p>
+                Tripwire was inspired by these methods, specifically the lateral movement phase. It sets up deceptive 'tripwires' or decoys that mimic valuable data within the network. When an attacker interacts with these decoys, Tripwire logs this interaction, providing crucial information about the attacker's actions and strategies. This allows security teams to gain valuable insights into the attacker's tactics, techniques, and procedures (TTPs), aiding in detection and response efforts.
+
+            </p>
+            <p>
+                By leveraging the insights from the MITRE ATT&CK framework and the tendencies of attackers, Tripwire provides a potent tool to combat these persistent threats and protect valuable organizational data.
+
             </p>
             
             <p>
