@@ -37,7 +37,10 @@
                 The ATT&CK matrix offers a comprehensive depiction of a cyber attack lifecycle, encompassing stages such as initial reconnaissance, network intrusion, establishing a foothold, lateral movement, and ultimately, data exfiltration.
             </p>
             <p>
-                The adversaries described in the ATT&CK matrix are constantly hunting for valuable data, such as credentials and personally identifiable information (PII). Their initial reconnaissance often involves scanning for system vulnerabilities or launching spear-phishing attacks to gain an initial foothold. Once inside the network, they establish persistence and start to move laterally within the network, exploring various paths and methods to access the desired information. This lateral movement frequently involves techniques like Pass the Hash or Pass the Ticket, which exploit legitimate credentials to access additional systems.
+                The adversaries described in the ATT&CK matrix are constantly hunting for valuable data, such as credentials and personally identifiable information (PII). Their initial reconnaissance often involves scanning for system vulnerabilities or launching spear-phishing attacks to gain an initial foothold. Once inside the network, they establish persistence and start to move laterally within the network, exploring various paths and methods to access the desired information. This lateral movement frequently involves techniques like Pass the Hash or Pass the Ticket, which exploit legitimate credentials to access additional systems. 
+            </p>
+            <p>
+                The adversaries also employ methods such as living off the land (LotL) and leveraging native tools available on the system to remain undetected. Eventually, once they've amassed the information they seek, they proceed to the exfiltration phase. Here, they often use sophisticated methods, like using encrypted channels or DNS tunneling, to securely transmit the data back to their own servers, leaving behind minimal traces of their activities. It's critical to note that these malicious actors are continually evolving, updating their techniques and tools to circumvent detection and prevention mechanisms. Thus, the MITRE ATT&CK matrix is not a static framework but a dynamic, continually updated resource, helping cybersecurity professionals anticipate and mitigate emerging threats effectively.
             </p>
 
             <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
@@ -53,7 +56,7 @@
             </p>
             
             <p>
-                The tool focuses primarily for on-prem corporate windows environments, specifically Windows 8/8.1/10 platforms and requires Go version 1.17.6+ for installation​.
+                The tool focuses primarily for on-prem corporate windows environments, specifically Windows 8/8.1/10 platforms. For local development purposes, it requires Go version 1.17.6+.
             </p>
     
 
