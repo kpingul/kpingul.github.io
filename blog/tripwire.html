@@ -27,14 +27,18 @@
                 Link to Project on GitHub
             </a>
             <p style="margin-top: 15px;">
-                Tripwire was a project I developed, drawing inspiration from my prior experience working for an endpoint security vendor and informed by the strategies of cyber adversaries as depicted in the <a href="https://attack.mitre.org/" style="text-decoration: underline; color: #1463b0 !important;padding: 0;display: initial;" target="_blank">MITRE ATT&CK</a> framework. The ATT&CK matrix offers a comprehensive depiction of a cyber attack lifecycle, encompassing stages such as initial reconnaissance, network intrusion, establishing a foothold, lateral movement, and ultimately, data exfiltration.
+                Tripwire was a project I developed, drawing inspiration from my prior experience working for an endpoint security vendor and informed by the strategies of cyber adversaries as depicted in the <a href="https://attack.mitre.org/" style="text-decoration: underline; color: #1463b0 !important;padding: 0;display: initial;" target="_blank">MITRE ATT&CK</a> framework. 
                 
             </p>
             <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
                 Utilizing Adversary Strategies
             </p>
             <p>
-                The adversaries described in the ATT&CK matrix are constantly hunting for valuable data, such as credentials and personally identifiable information (PII). Their initial reconnaissance often involves scanning for system vulnerabilities or launching spear-phishing attacks to gain an initial foothold. Once inside the network, they establish persistence and start to move laterally within the network, exploring various paths and methods to access the desired information. This lateral movement frequently involves techniques like Pass the Hash or Pass the Ticket, which exploit legitimate credentials to access additional systems.            </p>
+                The ATT&CK matrix offers a comprehensive depiction of a cyber attack lifecycle, encompassing stages such as initial reconnaissance, network intrusion, establishing a foothold, lateral movement, and ultimately, data exfiltration.
+            </p>
+            <p>
+                The adversaries described in the ATT&CK matrix are constantly hunting for valuable data, such as credentials and personally identifiable information (PII). Their initial reconnaissance often involves scanning for system vulnerabilities or launching spear-phishing attacks to gain an initial foothold. Once inside the network, they establish persistence and start to move laterally within the network, exploring various paths and methods to access the desired information. This lateral movement frequently involves techniques like Pass the Hash or Pass the Ticket, which exploit legitimate credentials to access additional systems.
+            </p>
             <p>
                 Inspired by these tactics, especially the phase of lateral movement, Tripwire sets up deceptive 'tripwires' or decoys that mimic valuable data within the network. When an attacker interacts with these decoys, Tripwire logs the interaction, yielding crucial information about the attacker's actions and strategies. This process enables security teams to gain valuable insights into the attacker's tactics, techniques, and procedures (TTPs), thereby aiding in detection and response efforts.
 
