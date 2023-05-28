@@ -24,11 +24,11 @@
         <div class="section-2">
             <h2 style="margin-bottom: 0px; font-weight: bold; font-size:1.25rem !important" >Tripwire: Leveraging Intruder Tactics</h2>
             <p style="margin-top: 15px;">
-                Tripwire was a project I developed that was inspired by how attackers operate, particularly their tendency to move laterally within a network environment. These malicious actors are constantly on the prowl, looking for valuable data such as credentials and personally identifiable information (PII). This relentless pursuit often leads them to move within an organization's network, trying various paths and methods to gain access to the desired information​. The tool is designed to work on Windows 8/8.1/10 platforms and requires Go version 1.17.6+ for installation​.
+                Tripwire was a project I developed that was inspired by how attackers operate, particularly their tendency to move laterally within a network environment primarily focused for on-prem corporate windows environments. These malicious actors are constantly on the prowl, looking for valuable data such as credentials and personally identifiable information (PII). This relentless pursuit often leads them to move within an organization's network, trying various paths and methods to gain access to the desired information​.
             </p>
 
             <p>
-                What makes Tripwire unique is its approach to tackling this problem. Instead of focusing solely on preventing these intrusions, it aims to use these actions against the attackers themselves. The tool achieves this by creating "tripwires" - essentially decoys that look like valuable targets for an attacker. These tripwires can be customised to mimic different types of data like PII, credit card information, or credentials. When an attacker interacts with one of these decoys, the tool logs this interaction, providing valuable information about the attack​.
+                What makes Tripwire unique is its approach to tackling this problem. Instead of focusing solely on preventing these intrusions, it aims to use these actions against the attackers themselves. The tool achieves this by creating "tripwires" - essentially decoys that look like valuable targets for an attacker. These tripwires can be customised to mimic different types of data like PII, credit card information, or credentials. When an attacker interacts with one of these decoys, the tool logs this interaction, providing valuable information about the attack​. The tool is designed to work on Windows 8/8.1/10 platforms and requires Go version 1.17.6+ for installation​.
             </p>
     
 
@@ -37,9 +37,15 @@
             </p>
             <p>
             
-                The Tripwire Visualizer provides a visual representation of potential security breaches, showing the movements of rogue users within a network. This can be incredibly valuable for Incident Response (IR) and Security Operations Center (SOC) teams, as it can provide visual evidence that can be used in further investigations​ as shown below.
+                The Tripwire Visualizer provides a visual representation of potential security breaches, showing the movements of rogue users within a network. This can be incredibly valuable for Incident Response (IR) and Security Operations Center (SOC) teams, as it can provide visual evidence that can be used in further investigations​ as shown in Figure 1 below.
+            </p>
+            <p>
+                In addition to this, Tripwire incorporates Windows event logs to provide more contextual data about these interactions. Event logs can provide information about what process was involved in opening the file, the account used, and the domain they were in. This additional context can be incredibly valuable when investigating an incident, as it provides a more complete picture of the attacker's actions. For instance, with event id 4663, it's possible to determine what process was involved in opening the file, possibly what account was used, and the domain they are in. With event id 4624 and 4625, it becomes possible to see when they've logged into that account and from which machine, even if it's not coming from the compromised host​.
             </p>
             <img src="./../images/tripwire.png" />
+            <p style="font-size: 0.7rem";>
+                <em>Figure 1: Tripwire dashboard / visualizer</em>
+            </p>
 
             <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
                 How Red and Blue Teams Can Benefit
@@ -63,7 +69,7 @@
                 <b>Conclusion</b>
             </p>
             <p>
-                Though it's in its early stages and considered a POC, Tripwire shows a lot of promise as a tool for both red and blue teams in the world of infosec. As the project continues to evolve, it will be exciting to see the impact it has on the field of endpoint security.
+                By leveraging attacker movements and providing a rich context of their actions, Tripwire empowers security teams with the insights they need to combat these threats effectively. Whether it's understanding a rogue user's pathway within a network or making sense of complex Windows event logs, Tripwire is there to illuminate the dark corners of cyber intrusions. As we continue to evolve in the digital age, tools like Tripwire will play a pivotal role in shaping our defense strategies, ensuring that we stay one step ahead in the game of cybersecurity.
             </p>
 
         
