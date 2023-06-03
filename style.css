@@ -92,7 +92,7 @@ p{
 .section-2 a{
     display: block;
     padding:  5px;
-    margin: 12px 0px;
+    /* margin: 12px 0px; */
     font-size: 1.25rem;
     padding-left: 0;
     /* width: 100px; */
