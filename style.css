@@ -92,7 +92,7 @@ p{
 .section-2 a{
     display: block;
     padding: 9px 5px;
-    font-size: 1rem;
+    font-size: 1.25rem;
     padding-left: 0;
     /* width: 100px; */
     text-decoration: underline;
@@ -145,5 +145,8 @@ p{
     }
     .section-2 .dates{
         font-size: 10px !important;
+    }
+    .section-2 a{
+        font-size: 1.4rem;
     }
 }
