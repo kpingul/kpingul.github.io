@@ -91,10 +91,11 @@ p{
 
 .section-2 a{
     display: block;
-    padding: 5px;
+    padding: 9px 5px;
     font-size: 1rem;
     padding-left: 0;
     /* width: 100px; */
+    text-decoration: underline;
 }
 /* animations / utilities */
 .section-2 a:hover{
