@@ -91,30 +91,14 @@ p{
 
 .section-2 a{
     display: block;
-    padding: 9px 5px;
+    padding:  5px;
+    margin: 12px 0px;
     font-size: 1.25rem;
     padding-left: 0;
     /* width: 100px; */
     text-decoration: underline;
 }
-/* animations / utilities */
-.section-2 a:hover{
-    font-size: 1.1rem;
-    color: #4b4b4b;
-    cursor: pointer;
-    transition: 0.2s;
-}
 
-.section-1 a:hover{
-    color: #4b4b4b;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.section-1 i:hover{
-    color: #4b4b4b;
-    cursor: pointer;
-    transition: 0.3s;
-}
 
 .white:hover{
     position: relative;
