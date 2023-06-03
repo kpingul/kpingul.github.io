@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../style.css">
+    <title>Kirck Pingul</title>
+</head>
+<body>
+    <div class="grid-2">
+        <div class="section-1">
+            <h2>
+                <a href="/" style="color: #4b4b4b; font-size: 1.6rem;">
+                    kirck pingul
+                </a>
+            </h2>
+            
+            <a href="https://www.twitter.com/kirckp" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.github.com/kpingul" target="_blank" class="fab fa-github"></i></a>
+        </div>
+        <div class="section-2">
+            <h2 class="blog-title" >Intro to Packet Sniffing: A Dive into Network Security</h2>
+            <a href="https://github.com/kpingul/packetsniffer" style="text-decoration: underline; color: #1463b0 !important" target="_blank">
+                Link to Project on GitHub
+            </a>
+            <p style="margin-top: 15px;">
+                In today's interconnected world, network security is paramount. One fundamental aspect of this field is understanding network traffic, and that's where the concept of packet sniffing comes into play. Packet sniffing is a method used to monitor and analyze network traffic. By capturing, inspecting, and interpreting the packets that travel through a network, we gain insights into what data is being transferred, how, and by whom.
+
+            </p>
+            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                The Importance of Packet Sniffing in Security
+            </p>
+            <p>
+                <b>Network Troubleshooting</b>
+            </p>
+            <p>
+                Packet sniffing allows network administrators to troubleshoot network problems by providing a granular view of traffic patterns, identifying bottlenecks, and detecting anomalies.
+            </p>
+            <p>
+                <b>Security Monitoring and Intrusion Detection</b>
+            </p>
+            <p>
+                Packet sniffers can monitor network traffic for suspicious activity, such as an unusually high volume of data being transferred to an external IP address. This can signal a data breach or an ongoing attack.
+
+            </p>
+            <p>
+                <b>Forensic Analysis and Incident Response</b>
+            </p>
+            <p>
+                In the event of a security incident, packet sniffers can be used to perform a detailed analysis of network traffic during the incident timeframe. This can help to understand the incident's scope, its origin, and the attacker's methods.
+            </p>
+            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                Introducing the PacketSniffer Tool
+            </p>
+
+            <p>
+                As an example of a practical tool in this field, I'd like to introduce a project I developed called PacketSniffer. The tool is a simple and useful sniffer that captures network traffic based on given preferences. It provides an interactive command-line interface (CLI), packet capture, and PCAP file analysis. I developed this tool to help me understand networking and the importance of packet analysis. The project also offers a feature called Packet Visualizer, which displays network traffic, including outbound traffic from a host.
+            </p>
+
+            <img src="./../images/packetsniffer.png" />
+            <p style="font-size: 0.7rem";>
+                <em>Figure 1: Packet Visualizer</em>
+            </p>
+
+            <p>
+                The project is written in Go, JavaScript, HTML, and only supports Windows 8/8.1/10. It is still a work in progress, with plans to add a threat detection service and a user interface for pcap file analysis. Eventually, it will show more packet data like protocols, payload information, packet length, TTL, and more. Additionally, there will be an option to upload pcap files for visualizing network activity. These features will enhance the tool's ability to detect suspicious activities and provide valuable insights for incident response and Security Operations Center (SOC) teams. In the future, the tool will also offer the ability to capture traffic based on set rules, like CPU resource spikes, and integrate with firewalls to block suspicious communication paths.
+            </p>
+    
+            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                Conclusion
+            </p>
+
+            <p>
+                In the world of cybersecurity, understanding the intricacies of network traffic is crucial. By understanding packet sniffing and utilizing tools like PacketSniffer, you can play an active role in safeguarding your network, detecting threats, and responding effectively to incidents.
+                
+             </p>
+        
+        </div>
+    </div>
+</body>
+</html>
