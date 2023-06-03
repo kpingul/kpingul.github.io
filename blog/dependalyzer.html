@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../style.css">
+    <title>Kirck Pingul</title>
+</head>
+<body>
+    <div class="grid-2">
+        <div class="section-1">
+            <h2>
+                <a href="/" style="color: #4b4b4b; font-size: 1.6rem;">
+                    kirck pingul
+                </a>
+            </h2>
+            
+            <a href="https://www.twitter.com/kirckp" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.github.com/kpingul" target="_blank" class="fab fa-github"></i></a>
+        </div>
+        <div class="section-2">
+            <h2 class="blog-title" >Dependalyzer: Understanding Your Software Supply Chain</h2>
+            <a href="https://github.com/kpingul/dependalyzer" style="text-decoration: underline; color: #1463b0 !important" target="_blank">
+                Link to Project on GitHub
+            </a>
+            <p style="margin-top: 15px;">
+                Dependalyzer is an open source project I developed and wanted to share a bit about what it is, why I created it, and how it can help teams.
+            </p>
+            <p>
+                Dependabot is an automated dependency management tool by GitHub that helps developers keep their software projects up to date with the latest security patches and software updates. It helps users of your GitHub Enterprise Server instance find and fix vulnerabilities in their dependencies. You can enable Dependabot alerts to notify users about vulnerable dependencies and Dependabot updates to fix the vulnerabilities and keep dependencies updated to the latest version. However, as I worked with it, I saw an area where it could improve. One of the biggest challenges with Dependabot is that it didn't provide an aggregate view of all the vulnerable dependencies across all your repositories. Teams would have to manually visit each repository and view the findings one by one. This does not scale effectively, especially in large organizations with numerous repositories. To solve this problem, I created Dependalyzer.
+            </p>
+            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                The Importance of Supply Chain Security
+            </p>
+            <p>
+                Before I talk about the project, let's talk about suplpy chain security. Supply chain security is paramount in today's software development environment. It ensures the integrity and security of all components that make up your software. This involves understanding the risks associated with each dependency, monitoring for known vulnerabilities, and applying fixes promptly.
+
+            </p>
+            <p>
+                Supply chain attacks, where an attacker compromises a trusted component of the software supply chain, have been on the rise. These attacks can lead to significant damage as they can affect multiple products and services that rely on the compromised component. It's therefore crucial to have a robust process to manage dependencies and ensure their security, hence why a lot of these software composition analysis tools are important.
+
+            </p>
+
+            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                Dependalyzer Overview
+            </p>
+            <p>
+                
+                Dependalyzer is a tool designed to aggregate and visualize vulnerable dependencies across all of an organization's repositories using GitHub's GraphQL API and data visualizations. It enhances Dependabot's functionality by providing a comprehensive view of vulnerabilities, cross-referencing with CISA's known exploited vulnerabilities, and aiding teams in prioritizing security fixes. 
+
+
+            </p>
+            <img src="./../images/dependalyzer-poc.png" />
+            <p style="font-size: 0.7rem";>
+                <em>Figure 1: Dashboard</em>
+            </p>
+
+            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                How Security And Engineering Teams Can Benefit
+
+            </p>
+            <p>
+                <b>Aggregate View of Vulnerable Dependencies</b>
+            </p>
+            <p>
+                One of the main challenges with managing dependencies is the lack of an aggregate view of vulnerabilities across all repositories. Dependalyzer addresses this issue by providing a holistic view of all dependencies and their associated vulnerabilities. This saves time and effort for security teams, as they no longer need to manually visit each repository and view the findings individually. By having a centralized view, teams can prioritize and address vulnerabilities more efficiently.
+            </p>
+    
+
+            <p >
+                <b>Enhanced Supply Chain Security</b>
+            </p>
+            <p>
+                Supply chain security is crucial in today's software development landscape. Dependalyzer helps enhance supply chain security by enabling teams to monitor and assess the risks associated with each dependency. It leverages data visualizations to represent the state of dependencies across an organization's repositories, making it easier to identify potential vulnerabilities and take proactive measures to mitigate them. By having a robust process to manage dependencies and ensure their security, teams can reduce the risk of supply chain attacks.
+            </p>
+            <p>
+                <b>Improved Scalability for Large Organizations</b>
+            </p>
+            <p>
+                Dependabot, while a valuable tool, may not scale effectively for large organizations with numerous repositories. Manual assessment of vulnerabilities in each repository becomes time-consuming and inefficient. Dependalyzer solves this problem by providing a scalable solution that works seamlessly across the entire organization. It leverages GitHub's GraphQL API to aggregate all Dependabot findings, allowing security and engineering teams to assess vulnerabilities in a centralized manner, regardless of the size of the organization.
+            </p>
+            <p>
+                <b>Customizable</b>
+            </p>
+            <p>
+                Dependalyzer is an open source project, which means security and engineering teams can customize and adapt it to fit their specific requirements. Being built using Go, JavaScript, and HTML, it provides flexibility for customization and integration with existing security and engineering workflows. Teams can extend its functionalities, integrate it with other security tools, or contribute to its development, making it a valuable addition to their software supply chain security arsenal.
+            </p>
+
+            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                Conclusion
+            </p>
+
+            <p>
+                Dependalyzer offers security and engineering teams an effective solution to understand their software supply chain and manage dependencies more efficiently. It provides an aggregate view of vulnerabilities, enhances supply chain security, scales effectively for large organizations, and offers customization options, ultimately helping teams ensure the integrity and security of their software components.            
+            </p>
+        
+        </div>
+    </div>
+</body>
+</html>
