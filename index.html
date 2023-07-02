@@ -25,59 +25,92 @@
         </div>
         <div class="section-2">
             <h2 style="font-weight: bold;">Blogs</h2>
-            <a href="blog/appseccon2023.html">AppSecCon: Application Security Conference</a>
-            <p style="font-size: 0.75rem !important">
-                Attending the virual security conference.
-            </p>
-            <a href="blog/nahamcon2023.html">NahamCon: Offensive Security Conference</a>
-            <p style="font-size: 0.75rem !important">
-                Attending the virual security conference.
-            </p>
-            <a href="blog/threatmodel.html">Basics of Threat Modeling</a>
-            <p style="font-size: 0.75rem !important">
-                Learn how threat modeling can help identify potential security threats.
-            </p>
-            <a href="blog/burpsuite.html">Intro to Burp Suite</a>
-            <p style="font-size: 0.75rem !important">
-                Learn about an essential tool for web application security testing.
-            </p>
-            <a href="blog/tripwire.html">Tripwire: Leveraging Adversarial Tactics</a>
-            <p style="font-size: 0.75rem !important">
-                How learning from an attacker's tactics, teechniques, and procedures (TTPs) can help security teams.
-            </p>
-
-            <a href="blog/dependalyzer.html">Dependalyzer: Understanding Your Software Supply Chain</a>
-            <p style="font-size: 0.75rem !important">
-                Expanding on GitHub's Dependabot to help teams tackle software supply chain security.
-            </p>
-            
-            <a href="blog/packetsniffer.html">Intro to Packet Sniffing</a>
-            <p style="font-size: 0.75rem !important">
-                Learn about packet sniffing and why packets don't lie.
-            </p>
-            
-            <a href="blog/endpointsecurity.html">What is Endpoint Security?</a>
-            <p style="font-size: 0.75rem !important">
-                Learn the importance of endpoint security.
-            </p>
-            
-            <a href="blog/bsidessf2023.html">BSides San Francisco: Infosec Conference</a>
-            <p style="font-size: 0.75rem !important">
-                Attending the BSides event.
-            </p>
-            
-            <a href="blog/svusawards2019.html">SVUS Awards</a>
-            <p style="font-size: 0.75rem !important">
-                Attending my first awards on behalf of my previous employer.
-            </p>
-            <!-- <h2 style="font-weight: bold;">Projects</h2>
-            <a href="https://github.com/kpingul/tripwire" target="_target">Tripwire</a>
-            <a href="https://github.com/kpingul/dependalyzer" target="_target">Dependalyzer</a>
-            <a href="https://github.com/kpingul/packetsniffer"target="_target">Packet Visualizer</a>
-            <a href="https://github.com/kpingul/appalyzer" target="_target">Appalyzer</a> -->
-        
-        
         </div>
     </div>
+
+    <script>
+        // Let's assume we have an array of all our blogs.
+        let blogs = [
+            {title: "AppSecCon: Application Security Conference", description: "Attending the virual security conference.", link: "blog/appseccon2023.html"},
+            {title: "NahamCon: Offensive Security Conference", description: "Attending the virual security conference.", link: "blog/nahamcon2023.html"},
+            {title: "Basics of Threat Modeling", description: "Learn how threat modeling can help identify potential security threats.", link: "blog/threatmodel.html"},
+            {title: "Intro to Burp Suite", description: "Learn about an essential tool for web application security testing.", link: "blog/burpsuite.html"},
+            {title: "Tripwire: Leveraging Adversarial Tactics", description: "How learning from an attacker's tactics, teechniques, and procedures (TTPs) can help security teams.", link: "blog/tripwire.html"},
+            {title: "Dependalyzer: Understanding Your Software Supply Chain", description: "Expanding on GitHub's Dependabot to help teams tackle software supply chain security.", link: "blog/dependalyzer.html"},
+            {title: "Intro to Packet Sniffing", description: "Learn about packet sniffing and it's importance", link: "blog/packetsniffer.html"},
+            {title: "What is Endpoint Security?", description: "Learn the importance of endpoint security.", link: "blog/endpointsecurity.html"},
+            {title: "BSides San Francisco: Infosec Conference", description: "Attending the BSides event.", link: "blog/bsidessf2023.html"},
+            {title: "SVUS Awards", description: "Attending my first awards on behalf of my previous employer.", link: "blog/svusawards2019.html"},
+        ];
+        
+        let currentPage = 1;
+        let blogsPerPage = 6;
+        
+        // This function will display the blogs for the current page.
+        function displayBlogs() {
+            let start = (currentPage - 1) * blogsPerPage;
+            let end = start + blogsPerPage;
+            
+            let blogsToDisplay = blogs.slice(start, end);
+        
+            let blogsContainer = document.querySelector('.section-2');
+            blogsContainer.innerHTML = '';
+        
+            for (let blog of blogsToDisplay) {
+                let blogLink = document.createElement('a');
+                blogLink.href = blog.link;
+                blogLink.textContent = blog.title;
+                
+                let blogDescription = document.createElement('p');
+                blogDescription.style.fontSize = "0.75rem !important";
+                blogDescription.textContent = blog.description;
+                
+                blogsContainer.appendChild(blogLink);
+                blogsContainer.appendChild(blogDescription);
+            }
+        }
+        
+        // This function will create the pagination links.
+        function createPagination() {
+            let totalPages = Math.ceil(blogs.length / blogsPerPage);
+            
+            let paginationContainer = document.createElement('div');
+            paginationContainer.className = 'pagination';
+            
+            for (let i = 1; i <= totalPages; i++) {
+                let pageLink = document.createElement('a');
+                pageLink.href = "#";
+                pageLink.textContent = i;
+                if(i == currentPage) {
+                    pageLink.className = 'active';
+                }
+                pageLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    currentPage = i;
+                    displayBlogs();
+                    updatePagination();
+                });
+                
+                paginationContainer.appendChild(pageLink);
+            }
+            
+            let section2 = document.querySelector('.section-2');
+            section2.appendChild(paginationContainer);
+        }
+
+        function updatePagination() {
+            let paginationContainer = document.querySelector('.pagination');
+            if (paginationContainer) {
+                paginationContainer.parentNode.removeChild(paginationContainer);
+            }
+            createPagination();
+        }
+
+        // Call the functions on page load.
+        window.addEventListener('DOMContentLoaded', function() {
+            displayBlogs();
+            updatePagination();
+        });
+    </script>
 </body>
 </html>
