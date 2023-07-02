@@ -23,8 +23,9 @@
             <a href="https://www.twitter.com/kirckp" target="_blank"><i class="fab fa-twitter"></i></a>
             <a href="https://www.github.com/kpingul" target="_blank" class="fab fa-github"></i></a>
         </div>
+        
         <div class="section-2">
-            <h2 style="font-weight: bold;">Blogs</h2>
+            <h2 style="font-weight: bold;">Blogs</h2>    
         </div>
     </div>
     <script>
@@ -48,28 +49,35 @@
         let currentPage = localStorage.getItem('currentPage') || 1;
     
         function displayBlogs() {
-            // Your existing code...
-            let start = (currentPage - 1) * blogsPerPage;
-            let end = start + blogsPerPage;
-            
-            let blogsToDisplay = blogs.slice(start, end);
-        
-            let blogsContainer = document.querySelector('.section-2');
+            const start = (currentPage - 1) * blogsPerPage;
+            const end = start + blogsPerPage;
+            const blogsToDisplay = blogs.slice(start, end);
+            const blogsContainer = document.querySelector('.section-2');
+
+            // Clear the existing content
             blogsContainer.innerHTML = '';
-        
-            for (let blog of blogsToDisplay) {
-                let blogLink = document.createElement('a');
+
+            // Create and append the h2 tag
+            const h2Tag = document.createElement('h2');
+            h2Tag.textContent = 'Blogs';
+            h2Tag.style.fontWeight = 'bold';
+            blogsContainer.appendChild(h2Tag);
+
+            for (const blog of blogsToDisplay) {
+                const blogLink = document.createElement('a');
                 blogLink.href = blog.link;
                 blogLink.textContent = blog.title;
-                
-                let blogDescription = document.createElement('p');
-                blogDescription.style.fontSize = "0.75rem !important";
+
+                const blogDescription = document.createElement('p');
+                blogDescription.style.fontSize = '0.75rem';
                 blogDescription.textContent = blog.description;
-                
+
                 blogsContainer.appendChild(blogLink);
                 blogsContainer.appendChild(blogDescription);
             }
         }
+
+
         
         function createPagination() {
             let totalPages = Math.ceil(blogs.length / blogsPerPage);
