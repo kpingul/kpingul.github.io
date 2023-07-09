@@ -14,7 +14,7 @@
     ];
 
 
-    let blogsPerPage = 7;
+    let blogsPerPage = 8;
 
     // Retrieve the current page from localStorage or default to 1
     let currentPage = localStorage.getItem('currentPage') || 1;
