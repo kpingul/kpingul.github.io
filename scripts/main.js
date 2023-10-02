@@ -2,7 +2,7 @@
     
     let blogs = [
 
-        {title: "Tripwire: Leveraging Adversarial Tactics", description: "How learning from an attacker's tactics, teechniques, and procedures (TTPs) can help security teams.", link: "blog/tripwire.html"},
+        {title: "Tripwire: Leveraging Adversarial Tactics", description: "How learning from an attacker's tactics, techniques, and procedures (TTPs) can help security teams.", link: "blog/tripwire.html"},
         {title: "Dependalyzer: Understanding Your Software Supply Chain", description: "Expanding on GitHub's Dependabot to help teams tackle software supply chain security.", link: "blog/dependalyzer.html"},
         {title: "BSides San Francisco: Infosec Conference", description: "Attending the BSides event.", link: "blog/bsidessf2023.html"},
         {title: "Basics of Threat Modeling", description: "Learn how threat modeling can help identify potential security threats.", link: "blog/threatmodel.html"},
