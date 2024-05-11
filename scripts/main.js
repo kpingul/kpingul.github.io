@@ -2,6 +2,8 @@
     
     let blogs = [
 
+        {title: "BSides San Francisco: Infosec Conference 2024", description: "Attending the BSides event.", link: "blog/bsidessf2024.html"},
+
         {title: "Tripwire: Leveraging Adversarial Tactics", description: "How learning from an attacker's tactics, techniques, and procedures (TTPs) can help security teams.", link: "blog/tripwire.html"},
         {title: "Dependalyzer: Understanding Your Software Supply Chain", description: "Expanding on GitHub's Dependabot to help teams tackle software supply chain security.", link: "blog/dependalyzer.html"},
         {title: "BSides San Francisco: Infosec Conference 2023", description: "Attending the BSides event.", link: "blog/bsidessf2023.html"},
