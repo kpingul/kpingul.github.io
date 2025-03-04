@@ -2,6 +2,7 @@
     
     let blogs = [
 
+        {title: "Why is Threat Intelligence Important?", description: "Learn the importance of threat intel.", link: "blog/threat_intel.html"},
         {title: "BSides San Francisco: Infosec Conference 2024", description: "Attending the BSides event.", link: "blog/bsidessf2024.html"},
         {title: "Activate: BitGo Developer Conference 2022", description: "Attending the Activate event as a staff member.", link: "blog/activate2022.html"},
         {title: "Tripwire: Leveraging Adversarial Tactics", description: "How learning from an attacker's tactics, techniques, and procedures (TTPs) can help security teams.", link: "blog/tripwire.html"},
