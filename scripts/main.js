@@ -1,6 +1,7 @@
 (function () {
     
     let blogs = [
+        {title: "DEF CON 33", description: "A First-Timer’s Experience at the World’s Biggest Hacker Playground", link: "blog/defcon2025.html"},
 
         {title: "RSA Conference 2025: 1 Day Pass", description: "A First-Timer’s Experience in Cybersecurity’s Biggest Arena.", link: "blog/rsa2025.html"},
         {title: "BSides San Francisco: Infosec Conference 2025", description: "Attending the BSides event.", link: "blog/bsidessf2025.html"},
