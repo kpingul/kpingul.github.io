@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../style.css">
+    <title>Kirck Pingul - Information Security</title>
+</head>
+<body>
+    <div class="grid-2">
+        <div class="section-1">
+            <h2>
+                <a href="/" style="color: #4b4b4b; font-size: 1.6rem;">                   
+                    Kirck Pingul
+                </a>
+                <p style="font-size: 0.8rem">
+                    Information Security
+                </p>
+            </h2>
+            
+            <a href="https://www.twitter.com/kirckp" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.github.com/kpingul" target="_blank" class="fab fa-github"></i></a>
+        </div>
+        <div class="section-2">
+            <h2 class="blog-title" >Lantern: A Practical Lens Into Your Local Network</h2>
+            <a href="https://github.com/kpingul/lantern" style="text-decoration: underline; color: #1463b0 !important" target="_blank">
+                Link to Project on GitHub
+            </a>
+            <p style="margin-top: 15px;">
+                Lantern is an open-source project I built to help me better understand what’s happening on my local network. It focuses on discovering connected devices, fingerprinting operating systems, and visualizing traffic patterns in a way that’s practical and approachable.            </p>
+            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                Why I Built Lantern            
+            </p>
+            <p>
+                I built Lantern because I kept running into the same problem: I’d be on a network—at home, in a lab, or in a small office—and I’d want a quick, trustworthy answer to a simple question:
+            </p>
+            <p>
+                <b>“What’s actually on here?”</b>
+            </p>
+            
+            <p>
+                Not just how many devices are connected, but what kinds of devices they are, what protocols they’re using, who’s talking the most, and whether anything feels out of place.
+            </p>
+            <p>
+                There are already powerful tools for packet capture and monitoring, but using them often means digging through raw packet dumps or juggling multiple utilities that don’t integrate well. I wanted something simpler: a tool that captures useful signals, summarizes them, and presents them in a way that feels more like a map than a log file.
+            </p>
+            <p>
+                Lantern is my attempt to solve that problem.
+            </p>
+            <img src="./../images/lantern_1 .png" />
+            <p style="font-size: 0.7rem";>
+                <em>Figure 1: Dashboard - The Network Overview page showing traffic categories, protocol distribution, top talkers, and device fingerprints.</em>
+            </p>
+
+            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                What I Wanted From It
+            </p>
+            <p>
+                When I started working on Lantern, I wasn’t trying to build a full intrusion detection system or replace enterprise platforms. I wanted a tool that was:
+            </p>
+            <p>
+                • Fast to run with minimal setup
+            </p>
+            <p>
+                • Honest about uncertainty (especially with OS fingerprinting)
+            </p>
+            <p>
+                • Useful out of the box
+            </p>
+            <p>
+                • Visual and intuitive
+            </p>
+            <p>
+                • Focused on real-world learning and investigation
+
+            </p>
+            <p>
+                Most importantly, I wanted something I’d actually enjoy using when I needed quick visibilit
+            </p>
+
+            <p style="margin-top: 15px; margin-bottom: 10px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                How Lantern Is Structured
+            </p>
+            <p>
+                Lantern is built around two main components:
+            </p>
+            <p>
+                1. A command-line sensor written in Go that captures and summarizes network traffic.
+
+            </p>
+            <p>
+                2. A web-based dashboard built with Next.js that visualizes the results.
+
+            </p>
+
+            <p>
+                The sensor handles data collection. The dashboard handles exploration. This separation keeps the capture layer lightweight and makes it easier to improve the UI independently.
+            </p>
+
+            <p style="margin-top: 15px; margin-bottom: 10px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                The Sensor
+            </p>
+            <p>
+                The Lantern sensor listens on a selected network interface and captures traffic using libpcap and gopacket. From there, it tries to answer two core questions:
+            </p>
+            <p>
+                Who is on the network?
+            </p>
+            <p>
+                What are they doing?
+            </p>
+            <p>
+                It uses naturally occurring network signals to build its picture, including:
+            </p>
+            <p>
+                • ARP and DHCP for device discovery
+            </p>
+            <p>
+                • mDNS, LLMNR, and NBNS for OS fingerprinting hints
+            </p>
+            <p>
+                • MAC vendor lookups via OUI databases
+            </p>
+            <p> 
+                • Protocol and port summaries
+            </p>
+            <p>
+                • Optional ARP sweeps for active discovery
+            </p>
+            <p>
+                Rather than storing massive packet captures, Lantern produces structured JSON summaries that focus on what’s most useful for analysis.
+            </p>
+
+             <img src="./../images/lantern_2.png" />
+            <p style="font-size: 0.7rem";>
+                <em>Figure 2: Dashboard - The device inventory showing MAC addresses, IPs, vendors, OS fingerprints, and discovery sources.</em>
+            </p>
+
+            <p style="margin-top: 15px; margin-bottom: 10px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                The Dashboard
+            </p>
+            <p>
+                The dashboard is where Lantern becomes most useful. After loading a summary file, I can immediately browse connected devices, filter by vendor or operating system, and inspect traffic patterns.            </p>
+            <p>
+            <p>
+                Instead of jumping between tools, everything lives in one place.
+            </p>
+
+             <img src="./../images/lantern_3.png" />
+            <p style="font-size: 0.7rem";>
+                <em>Figure 3: Dashboard - Traffic analysis view showing protocol breakdowns, top ports, and service categorization.</em>
+            </p>
+
+            <p>
+                One of the features I use most is the relationship graph. Tables are great for detail, but graphs are better at showing structure.
+            </p>
+            <p>
+                They make it easy to see:
+            </p>
+            <p>
+                • Which device acts as a central hub
+            </p>
+            <p>
+                • Which hosts generate the most traffic
+            </p>
+            <p>
+                • Which devices communicate externally
+            </p>
+            <p>
+                • Where unusual patterns might exist
+            </p>
+
+                <img src="./../images/lantern_4.png" />
+            <p style="font-size: 0.7rem";>
+                <em>Figure 4: Dashboard - Interactive network graph showing device relationships and external connections.</em>
+            </p>
+
+             <p style="margin-top: 15px; margin-bottom: 10px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                How I Use It in Practice
+            </p>
+            <p>
+                In practice, I use Lantern for:
+            </p>
+            <p>
+                • Quickly auditing what’s connected to a network
+            </p>
+            <p>
+                • Creating baselines for “normal” behavior
+            </p>
+            <p>
+                • Investigating unknown devices
+            </p>
+            <p>
+                • Learning how different operating systems behave on LANs
+            </p>
+            <p>
+                • Visualizing IoT and smart device communication
+            </p>
+            <p>
+                It’s especially useful when I want visibility without spinning up heavyweight monitoring infrastructure.
+            </p>
+            <p>
+
+            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
+                Conclusion
+            </p>
+
+            <p>
+                Lantern is my lightweight way of understanding local networks.            
+            </p>
+            <p>
+                It combines device discovery, traffic summaries, and relationship visualization into a single workflow that’s easy to run and easy to reason about. It’s not meant to replace enterprise tools, but it’s been genuinely useful for learning, troubleshooting, and quick security visibility.
+            </p>
+            <p>
+                If you’re interested in trying it out or contributing, you can find the project here:
+            </p>
+        
+        </div>
+    </div>
+</body>
+</html>
