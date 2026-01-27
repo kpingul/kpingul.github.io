@@ -38,7 +38,7 @@
 
         // Create and append the h2 tag
         const h2Tag = document.createElement('h2');
-        h2Tag.textContent = 'Blogs';
+        h2Tag.textContent = 'Recent Posts';
         h2Tag.style.fontWeight = 'bold';
         blogsContainer.appendChild(h2Tag);
 
