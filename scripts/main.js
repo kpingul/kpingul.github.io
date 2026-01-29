@@ -1,6 +1,7 @@
 (function () {
     
     let blogs = [
+        {title: "Gen AI vs Agentic AI: What I'm Learning and Why It Matters for Security", description: "Understanding the differences between Generative AI and Agentic AI in cybersecurity.", link: "blog/genai-vs-agentic-ai.html"},
         {title: "Lantern: A Practical Lens Into Your Local Network", description: "Understand what is happening on your local network.", link: "blog/lantern.html"},
         {title: "DEF CON 33: Hacking Conference", description: "A First-Timer’s Experience at the World’s Biggest Hacker Playground", link: "blog/defcon2025.html"},
         {title: "RSA Conference 2025: 1 Day Pass", description: "A First-Timer’s Experience in Cybersecurity’s Biggest Arena.", link: "blog/rsa2025.html"},
