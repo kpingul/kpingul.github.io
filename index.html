@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Kirck Pingul's security blog covering cybersecurity topics, threat intelligence, conferences, and open-source security tools.">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Kirck Pingul - Information Security</title>
+    <title>Kirck Pingul - Security Blog</title>
 </head>
 <body>
-    <div class="grid-2">
-        <div class="section-1">
-            <h2>
-                <a href="/" style="color: #4b4b4b; font-size: 1.6rem;">                   
-                    Kirck Pingul
-                </a>
-                <p style="font-size: 0.8rem">
-                    Security Blog
-                </p>
-            </h2>
+    <header class="top-bar">
+        <div class="top-bar-inner">
+            <div class="top-bar-brand">
+                <a href="/">Kirck Pingul</a>
+                <span>Security Blog</span>
+            </div>
+            <div class="top-bar-links">
+                <a href="https://www.twitter.com/kirckp" target="_blank" aria-label="Twitter profile"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.github.com/kpingul" target="_blank" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </header>
 
-            <a href="https://www.twitter.com/kirckp" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.github.com/kpingul" target="_blank" class="fab fa-github"></i></a>
-        </div>
-        
-        <div class="section-2">
-            <h2 style="font-weight: bold;">Blogs</h2>    
-        </div>
-    </div>
-    
-    <script type="text/javascript" src="./scripts/main.js"></script>
+    <div class="blog-list-wrapper" id="blog-list"></div>
+
+    <script type="text/javascript" src="./scripts/main.js" defer></script>
 </body>
 </html>

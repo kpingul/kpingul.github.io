@@ -4,103 +4,89 @@
     <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="How learning from an attacker's tactics, techniques, and procedures (TTPs) can help security teams.">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="./../style.css">
-    <title>Kirck Pingul - Information Security</title>
+    <title>Tripwire: Leveraging Adversarial Tactics - Kirck Pingul</title>
 </head>
 <body>
-    <div class="grid-2">
-        <div class="section-1">
-            <h2>
-                <a href="/" style="color: #4b4b4b; font-size: 1.6rem;">                   
-                    Kirck Pingul
-                </a>
-                <p style="font-size: 0.8rem">
-                    Information Security
-                </p>
-            </h2>
-            
-            <a href="https://www.twitter.com/kirckp" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.github.com/kpingul" target="_blank" class="fab fa-github"></i></a>
+    <header class="top-bar">
+        <div class="top-bar-inner">
+            <div class="top-bar-brand">
+                <a href="/">Kirck Pingul</a>
+                <span>Security Blog</span>
+            </div>
+            <div class="top-bar-links">
+                <a href="https://www.twitter.com/kirckp" target="_blank" aria-label="Twitter profile"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.github.com/kpingul" target="_blank" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+            </div>
         </div>
-        <div class="section-2">
-            <h2 class="blog-title" >Tripwire: Leveraging Adversarial Tactics</h2>
-            <a href="https://github.com/kpingul/tripwire" style="text-decoration: underline; color: #1463b0 !important" target="_blank">
-                Link to Project on GitHub
-            </a>
-            <p style="margin-top: 15px;">
-                Tripwire is an open source project I developed, drawing inspiration from my prior experience working at a cybersecurity startup. The company offered an endpoint security product which was what I worked on. It was also during this time I was first introduced to <a href="https://attack.mitre.org/" style="text-decoration: underline; color: #1463b0 !important;padding: 0;display: initial; font-size: 1rem !important;" target="_blank">MITRE's ATT&CK</a> framework, a curated knowledge base and model for cyber adversary behavior.
-                
-            </p>
-            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold; font-size: 1rem" >
-                MITRE ATT&CK 
-            </p>
-            <p>
-                The ATT&CK matrix offers a comprehensive depiction of a cyber attack lifecycle, encompassing stages such as initial reconnaissance, network intrusion, establishing a foothold, lateral movement, and ultimately, data exfiltration.
-            </p>
-            <p>
-                The adversaries described in the ATT&CK matrix are constantly hunting for valuable data, such as credentials and personally identifiable information (PII). Their initial reconnaissance often involves scanning for system vulnerabilities or launching spear-phishing attacks to gain an initial foothold. Once inside the network, they establish persistence and start to move laterally within the network, exploring various paths and methods to access the desired information. This lateral movement frequently involves techniques like Pass the Hash or Pass the Ticket, which exploit legitimate credentials to access additional systems. 
-            </p>
-            <p>
-                The adversaries also employ methods such as living off the land (LotL) and leveraging native tools available on the system to remain undetected. Eventually, once they've amassed the information they seek, they proceed to the exfiltration phase. Here, they often use sophisticated methods, like using encrypted channels or DNS tunneling, to securely transmit the data back to their own servers, leaving behind minimal traces of their activities. It's critical to note that these malicious actors are continually evolving, updating their techniques and tools to circumvent detection and prevention mechanisms. Thus, MITRE's ATT&CK matrix is not a static framework but a dynamic, continually updated resource, helping cybersecurity professionals anticipate and mitigate emerging threats effectively.
-            </p>
+    </header>
 
-            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
-                Tripwire Overview
-            </p>
-            <p>
-                Inspired by these tactics, especially the phase of lateral movement, Tripwire sets up deceptive 'tripwires' or decoys that mimic valuable data within the network. When an attacker interacts with these decoys, Tripwire logs the interaction, yielding valuable information about the attacker's actions and strategies. This process enables security teams to gain valuable insights into the attacker's tactics, techniques, and procedures (TTPs), thereby aiding in detection and response efforts.
+    <article class="article-wrapper">
+        <header class="article-header">
+            <h1>Tripwire: Leveraging Adversarial Tactics</h1>
+        </header>
 
-                The tool focuses primarily for on-prem corporate windows environments, specifically Windows 8/8.1/10 platforms. TheFor local development purposes, it requires Go version 1.17.6+.
-            </p>
-    
+        <a href="https://github.com/kpingul/tripwire" target="_blank" class="project-link">Link to Project on GitHub</a>
 
-            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
-                Tripwire Visualizer
-            </p>
-            <p>
-            
-                Tripwire also provides a visual representation of potential security breaches, showing the movements of rogue users within a network. This can be incredibly valuable for Incident Response (IR) and Security Operations Center (SOC) teams, as it can provide visual evidence that can be used in further investigations​ as shown in Figure 1 below.
-            </p>
-            <p>
-                In addition to this, Tripwire incorporates Windows event logs to provide more contextual data about these interactions. Event logs can provide information about what process was involved in opening the file, the account used, and the domain they were in. This additional context can be incredibly valuable when investigating an incident, as it provides a more complete picture of the attacker's actions. For instance, with event id 4663, it's possible to determine what process was involved in opening the file, possibly what account was used, and the domain they are in. With event id 4624 and 4625, it becomes possible to see when they've logged into that account and from which machine, even if it's not coming from the compromised host​.
-            </p>
-            <img src="./../images/tripwire.png" />
-            <p style="font-size: 0.7rem";>
-                <em>Figure 1: Lateral movement that leads to tripwire(decoy) access.</em>
-            </p>
+        <p>
+            Tripwire is an open source project I developed, drawing inspiration from my prior experience working at a cybersecurity startup. The company offered an endpoint security product which was what I worked on. It was also during this time I was first introduced to <a href="https://attack.mitre.org/" target="_blank">MITRE's ATT&CK</a> framework, a curated knowledge base and model for cyber adversary behavior.
+        </p>
 
-            <p style="margin-top: 15px; margin-bottom: 10px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
-                How Red and Blue Teams Can Benefit
-            </p>
-            <p>
-                <b>Red Teams</b>
-            </p>
-            <p>
-                For red teams, who are tasked with testing an organization's defenses, Tripwire can be an excellent tool for understanding potential vulnerabilities within a system. By planting tripwires (decoys) and monitoring how they are accessed, red teams can simulate the actions of an attacker. The visualizer can help to demonstrate the paths an attacker might take, highlighting areas where defenses could be improved.
+        <h2>MITRE ATT&CK</h2>
+        <p>
+            The ATT&CK matrix offers a comprehensive depiction of a cyber attack lifecycle, encompassing stages such as initial reconnaissance, network intrusion, establishing a foothold, lateral movement, and ultimately, data exfiltration.
+        </p>
+        <p>
+            The adversaries described in the ATT&CK matrix are constantly hunting for valuable data, such as credentials and personally identifiable information (PII). Their initial reconnaissance often involves scanning for system vulnerabilities or launching spear-phishing attacks to gain an initial foothold. Once inside the network, they establish persistence and start to move laterally within the network, exploring various paths and methods to access the desired information. This lateral movement frequently involves techniques like Pass the Hash or Pass the Ticket, which exploit legitimate credentials to access additional systems.
+        </p>
+        <p>
+            The adversaries also employ methods such as living off the land (LotL) and leveraging native tools available on the system to remain undetected. Eventually, once they've amassed the information they seek, they proceed to the exfiltration phase. Here, they often use sophisticated methods, like using encrypted channels or DNS tunneling, to securely transmit the data back to their own servers, leaving behind minimal traces of their activities. It's critical to note that these malicious actors are continually evolving, updating their techniques and tools to circumvent detection and prevention mechanisms. Thus, MITRE's ATT&CK matrix is not a static framework but a dynamic, continually updated resource, helping cybersecurity professionals anticipate and mitigate emerging threats effectively.
+        </p>
 
-            </p>
-            <p>
-                <b>Blue Teams</b>
-            </p>
+        <h2>Tripwire Overview</h2>
+        <p>
+            Inspired by these tactics, especially the phase of lateral movement, Tripwire sets up deceptive 'tripwires' or decoys that mimic valuable data within the network. When an attacker interacts with these decoys, Tripwire logs the interaction, yielding valuable information about the attacker's actions and strategies. This process enables security teams to gain valuable insights into the attacker's tactics, techniques, and procedures (TTPs), thereby aiding in detection and response efforts.
 
-            <p>
-                Blue teams, who focus on defending against attacks, can also benefit significantly from Tripwire. By planting tripwires and setting up alerts for unauthorized access, blue teams can identify potential security breaches early on. The additional context provided by windows event logs can be incredibly valuable in investigations, offering insights into which process was involved in accessing the file, the account used, and the domain they are in​.
-            </p>
+            The tool focuses primarily for on-prem corporate windows environments, specifically Windows 8/8.1/10 platforms. TheFor local development purposes, it requires Go version 1.17.6+.
+        </p>
 
-            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
-                Conclusion
-            </p>
+        <h2>Tripwire Visualizer</h2>
+        <p>
+            Tripwire also provides a visual representation of potential security breaches, showing the movements of rogue users within a network. This can be incredibly valuable for Incident Response (IR) and Security Operations Center (SOC) teams, as it can provide visual evidence that can be used in further investigations​ as shown in Figure 1 below.
+        </p>
+        <p>
+            In addition to this, Tripwire incorporates Windows event logs to provide more contextual data about these interactions. Event logs can provide information about what process was involved in opening the file, the account used, and the domain they were in. This additional context can be incredibly valuable when investigating an incident, as it provides a more complete picture of the attacker's actions. For instance, with event id 4663, it's possible to determine what process was involved in opening the file, possibly what account was used, and the domain they are in. With event id 4624 and 4625, it becomes possible to see when they've logged into that account and from which machine, even if it's not coming from the compromised host​.
+        </p>
 
-            <p>
-                By leveraging attacker movements and providing a rich context of their actions, Tripwire empowers security teams with the insights they need to combat these threats effectively. Whether it's understanding a rogue user's pathway within a network or making sense of complex Windows event logs, Tripwire is there to illuminate the dark corners of cyber intrusions. As we continue to evolve in the digital age, tools like Tripwire will play a pivotal role in shaping our defense strategies, ensuring that we stay one step ahead in the game of cybersecurity.
-            </p>
-            <p>
-                However, the project is still in its early stages. There's still a ton of work that needs done such as separating the project into a standard client and server, adding more controls, and support for other operating systems.
-            </p>
-        
-        </div>
-    </div>
+        <img src="./../images/tripwire.png" alt="Tripwire visualizer showing lateral movement leading to decoy access" loading="lazy" />
+        <p class="fig-caption">
+            <em>Figure 1: Lateral movement that leads to tripwire(decoy) access.</em>
+        </p>
+
+        <h2>How Red and Blue Teams Can Benefit</h2>
+        <p>
+            <b>Red Teams</b>
+        </p>
+        <p>
+            For red teams, who are tasked with testing an organization's defenses, Tripwire can be an excellent tool for understanding potential vulnerabilities within a system. By planting tripwires (decoys) and monitoring how they are accessed, red teams can simulate the actions of an attacker. The visualizer can help to demonstrate the paths an attacker might take, highlighting areas where defenses could be improved.
+        </p>
+        <p>
+            <b>Blue Teams</b>
+        </p>
+        <p>
+            Blue teams, who focus on defending against attacks, can also benefit significantly from Tripwire. By planting tripwires and setting up alerts for unauthorized access, blue teams can identify potential security breaches early on. The additional context provided by windows event logs can be incredibly valuable in investigations, offering insights into which process was involved in accessing the file, the account used, and the domain they are in​.
+        </p>
+
+        <h2>Conclusion</h2>
+        <p>
+            By leveraging attacker movements and providing a rich context of their actions, Tripwire empowers security teams with the insights they need to combat these threats effectively. Whether it's understanding a rogue user's pathway within a network or making sense of complex Windows event logs, Tripwire is there to illuminate the dark corners of cyber intrusions. As we continue to evolve in the digital age, tools like Tripwire will play a pivotal role in shaping our defense strategies, ensuring that we stay one step ahead in the game of cybersecurity.
+        </p>
+        <p>
+            However, the project is still in its early stages. There's still a ton of work that needs done such as separating the project into a standard client and server, adding more controls, and support for other operating systems.
+        </p>
+
+    </article>
 </body>
 </html>

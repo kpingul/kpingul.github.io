@@ -4,169 +4,158 @@
     <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Understanding the differences between Generative AI and Agentic AI in cybersecurity.">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="./../style.css">
-    <title>Kirck Pingul - Information Security</title>
+    <title>Gen AI vs Agentic AI: What I'm Learning and Why It Matters for Security - Kirck Pingul</title>
 </head>
 <body>
-    <div class="grid-2">
-        <div class="section-1">
-            <h2>
-                <a href="/" style="color: #4b4b4b; font-size: 1.6rem;">
-                    Kirck Pingul
-                </a>
-                <p style="font-size: 0.8rem">
-                    Information Security
-                </p>
-            </h2>
-
-            <a href="https://www.twitter.com/kirckp" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.github.com/kpingul" target="_blank" class="fab fa-github"></i></a>
+    <header class="top-bar">
+        <div class="top-bar-inner">
+            <div class="top-bar-brand">
+                <a href="/">Kirck Pingul</a>
+                <span>Security Blog</span>
+            </div>
+            <div class="top-bar-links">
+                <a href="https://www.twitter.com/kirckp" target="_blank" aria-label="Twitter profile"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.github.com/kpingul" target="_blank" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+            </div>
         </div>
-        <div class="section-2">
-            <h2 class="blog-title">Gen AI vs Agentic AI: What I'm Learning and Why It Matters for Security</h2>
-            <p style="margin-top: 15px;">
-                AI is showing up everywhere in security work right now. I see it in alert triage, reporting, research, and detection logic. Most of what people are using today falls under <b>Generative AI</b>.
-            </p>
-            <p>
-                Lately, I have been spending more time reading about <b>Agentic AI</b>. I am still learning and I definitely have a lot more to learn, but it feels like one of those shifts that will change how security teams operate over the next few years.
-            </p>
+    </header>
 
-            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;">
-                What people usually mean by Generative AI
-            </p>
-            <p>
-                Generative AI is focused on creating new content based on input. It can produce text, images, audio, video, and code in response to prompts. These systems are typically built on large foundation models trained on massive datasets to recognize patterns and generate outputs.<sup>1</sup>
-            </p>
-            <p>
-                From a security workflow standpoint, I think of Gen AI as primarily assistive. It accelerates tasks that are already human-driven.
-            </p>
-            <p>
-                Common examples include:
-            </p>
-            <ul>
-                <li>Summarizing threat reports and research</li>
-                <li>Explaining CVEs and vulnerabilities</li>
-                <li>Drafting incident summaries</li>
-                <li>Analyzing logs and alerts</li>
-            </ul>
-            <p>
-                In most cases, the tool responds to prompts, and the human still controls how the output is used.
-            </p>
+    <article class="article-wrapper">
+        <header class="article-header">
+            <h1>Gen AI vs Agentic AI: What I'm Learning and Why It Matters for Security</h1>
+        </header>
 
-            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;">
-                What people usually mean by Agentic AI
-            </p>
-            <p>
-                Agentic AI goes beyond generating content. These systems are designed to pursue goals, plan steps, use tools, and take actions in other systems.<sup>2</sup>
-            </p>
-            <p>
-                Instead of responding to a single prompt, an agentic system can:
-            </p>
-            <ul>
-                <li>Interpret high-level objectives</li>
-                <li>Break them into multiple tasks</li>
-                <li>Use APIs and tools</li>
-                <li>Adapt based on outcomes</li>
-                <li>Maintain short-term context and memory</li>
-            </ul>
-            <p>
-                Many industry sources describe AI agents as systems capable of reasoning, planning, and autonomous execution.<sup>3</sup>
-            </p>
-            <p>
-                I think of this as a shift from "AI that answers questions" to "AI that performs work." Learning about this model has changed how I think about automation in security environments.
-            </p>
+        <p>
+            AI is showing up everywhere in security work right now. I see it in alert triage, reporting, research, and detection logic. Most of what people are using today falls under <b>Generative AI</b>.
+        </p>
+        <p>
+            Lately, I have been spending more time reading about <b>Agentic AI</b>. I am still learning and I definitely have a lot more to learn, but it feels like one of those shifts that will change how security teams operate over the next few years.
+        </p>
 
-            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;">
-                Accountability and agentic systems
-            </p>
-            <p>
-                One topic that keeps standing out to me as I learn more about Agentic AI is accountability.
-            </p>
-            <p>
-                With Generative AI, responsibility is usually clear. A person requests information, reviews it, and decides how to act.
-            </p>
-            <p>
-                With Agentic AI, decisions may happen automatically across multiple systems. When something goes wrong, it may not be obvious where responsibility lies.
-            </p>
-            <p>
-                This can involve:
-            </p>
-            <ul>
-                <li>System design</li>
-                <li>Configuration choices</li>
-                <li>Data sources</li>
-                <li>Workflow logic</li>
-                <li>Human oversight</li>
-            </ul>
-            <p>
-                As autonomy increases, governance becomes more complex. The NIST AI Risk Management Framework emphasizes transparency, accountability, and oversight as core principles for trustworthy AI systems.<sup>4</sup>
-            </p>
-            <p>
-                Understanding how organizations will manage responsibility in these environments is something I am still learning, and it will likely remain a major topic in this space.
-            </p>
+        <h2>What people usually mean by Generative AI</h2>
+        <p>
+            Generative AI is focused on creating new content based on input. It can produce text, images, audio, video, and code in response to prompts. These systems are typically built on large foundation models trained on massive datasets to recognize patterns and generate outputs.<sup>1</sup>
+        </p>
+        <p>
+            From a security workflow standpoint, I think of Gen AI as primarily assistive. It accelerates tasks that are already human-driven.
+        </p>
+        <p>
+            Common examples include:
+        </p>
+        <ul>
+            <li>Summarizing threat reports and research</li>
+            <li>Explaining CVEs and vulnerabilities</li>
+            <li>Drafting incident summaries</li>
+            <li>Analyzing logs and alerts</li>
+        </ul>
+        <p>
+            In most cases, the tool responds to prompts, and the human still controls how the output is used.
+        </p>
 
-            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;">
-                Why this feels exciting for the future
-            </p>
-            <p>
-                Even with these open questions, I find this area genuinely exciting.
-            </p>
-            <p>
-                Generative AI already makes it easier to process information at the pace security demands. Agentic AI suggests a future where systems can coordinate complex workflows with less manual intervention.
-            </p>
-            <p>
-                At the same time, increased autonomy means that security professionals may spend more time designing, monitoring, and governing systems rather than only responding to alerts.
-            </p>
-            <p>
-                This represents a major shift in how security work may look in the coming years.
-            </p>
-            <p>
-                I still have a lot to learn about how these models will evolve in practice, but watching this transition happen in real time has been both challenging and motivating.
-            </p>
+        <h2>What people usually mean by Agentic AI</h2>
+        <p>
+            Agentic AI goes beyond generating content. These systems are designed to pursue goals, plan steps, use tools, and take actions in other systems.<sup>2</sup>
+        </p>
+        <p>
+            Instead of responding to a single prompt, an agentic system can:
+        </p>
+        <ul>
+            <li>Interpret high-level objectives</li>
+            <li>Break them into multiple tasks</li>
+            <li>Use APIs and tools</li>
+            <li>Adapt based on outcomes</li>
+            <li>Maintain short-term context and memory</li>
+        </ul>
+        <p>
+            Many industry sources describe AI agents as systems capable of reasoning, planning, and autonomous execution.<sup>3</sup>
+        </p>
+        <p>
+            I think of this as a shift from "AI that answers questions" to "AI that performs work." Learning about this model has changed how I think about automation in security environments.
+        </p>
 
-            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;">
-                Closing Thoughts
-            </p>
-            <p>
-                Generative AI and Agentic AI represent different stages in how artificial intelligence is being applied in cybersecurity.
-            </p>
-            <p>
-                Generative AI supports human decision-making.
-                Agentic AI introduces systems that can operate with partial independence.
-            </p>
-            <p>
-                Both approaches are still evolving.
-            </p>
-            <p>
-                As I continue learning in this space, I am realizing that understanding these differences is becoming more important for anyone working in security. The technology is moving quickly, and the opportunities and risks are growing just as fast.
-            </p>
-            <p>
-                There is still much to explore, but it is exciting to see how AI may shape security operations in the years ahead.
-            </p>
+        <h2>Accountability and agentic systems</h2>
+        <p>
+            One topic that keeps standing out to me as I learn more about Agentic AI is accountability.
+        </p>
+        <p>
+            With Generative AI, responsibility is usually clear. A person requests information, reviews it, and decides how to act.
+        </p>
+        <p>
+            With Agentic AI, decisions may happen automatically across multiple systems. When something goes wrong, it may not be obvious where responsibility lies.
+        </p>
+        <p>
+            This can involve:
+        </p>
+        <ul>
+            <li>System design</li>
+            <li>Configuration choices</li>
+            <li>Data sources</li>
+            <li>Workflow logic</li>
+            <li>Human oversight</li>
+        </ul>
+        <p>
+            As autonomy increases, governance becomes more complex. The NIST AI Risk Management Framework emphasizes transparency, accountability, and oversight as core principles for trustworthy AI systems.<sup>4</sup>
+        </p>
+        <p>
+            Understanding how organizations will manage responsibility in these environments is something I am still learning, and it will likely remain a major topic in this space.
+        </p>
 
-            <p style="margin-top: 25px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;">
-                References
-            </p>
-            <p>
-                1. Google Cloud. "Generative AI: Use Cases and Overview."
-                <a href="https://cloud.google.com/use-cases/generative-ai" target="_blank" style="text-decoration: underline; color: #1463b0 !important">https://cloud.google.com/use-cases/generative-ai</a>
-            </p>
-            <p>
-                2. Google Cloud. "What Is Agentic AI?"
-                <a href="https://cloud.google.com/discover/what-is-agentic-ai" target="_blank" style="text-decoration: underline; color: #1463b0 !important">https://cloud.google.com/discover/what-is-agentic-ai</a>
-            </p>
-            <p>
-                3. Google Cloud. "What Are AI Agents?"
-                <a href="https://cloud.google.com/discover/what-are-ai-agents" target="_blank" style="text-decoration: underline; color: #1463b0 !important">https://cloud.google.com/discover/what-are-ai-agents</a>
-            </p>
-            <p>
-                4. NIST. "AI Risk Management Framework (AI RMF 1.0)."
-                <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" style="text-decoration: underline; color: #1463b0 !important">https://www.nist.gov/itl/ai-risk-management-framework</a>
-            </p>
+        <h2>Why this feels exciting for the future</h2>
+        <p>
+            Even with these open questions, I find this area genuinely exciting.
+        </p>
+        <p>
+            Generative AI already makes it easier to process information at the pace security demands. Agentic AI suggests a future where systems can coordinate complex workflows with less manual intervention.
+        </p>
+        <p>
+            At the same time, increased autonomy means that security professionals may spend more time designing, monitoring, and governing systems rather than only responding to alerts.
+        </p>
+        <p>
+            This represents a major shift in how security work may look in the coming years.
+        </p>
+        <p>
+            I still have a lot to learn about how these models will evolve in practice, but watching this transition happen in real time has been both challenging and motivating.
+        </p>
 
-        </div>
-    </div>
+        <h2>Closing Thoughts</h2>
+        <p>
+            Generative AI and Agentic AI represent different stages in how artificial intelligence is being applied in cybersecurity.
+        </p>
+        <p>
+            Generative AI supports human decision-making.
+            Agentic AI introduces systems that can operate with partial independence.
+        </p>
+        <p>
+            Both approaches are still evolving.
+        </p>
+        <p>
+            As I continue learning in this space, I am realizing that understanding these differences is becoming more important for anyone working in security. The technology is moving quickly, and the opportunities and risks are growing just as fast.
+        </p>
+        <p>
+            There is still much to explore, but it is exciting to see how AI may shape security operations in the years ahead.
+        </p>
+
+        <h2>References</h2>
+        <p>
+            1. Google Cloud. "Generative AI: Use Cases and Overview."
+            <a href="https://cloud.google.com/use-cases/generative-ai" target="_blank">https://cloud.google.com/use-cases/generative-ai</a>
+        </p>
+        <p>
+            2. Google Cloud. "What Is Agentic AI?"
+            <a href="https://cloud.google.com/discover/what-is-agentic-ai" target="_blank">https://cloud.google.com/discover/what-is-agentic-ai</a>
+        </p>
+        <p>
+            3. Google Cloud. "What Are AI Agents?"
+            <a href="https://cloud.google.com/discover/what-are-ai-agents" target="_blank">https://cloud.google.com/discover/what-are-ai-agents</a>
+        </p>
+        <p>
+            4. NIST. "AI Risk Management Framework (AI RMF 1.0)."
+            <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank">https://www.nist.gov/itl/ai-risk-management-framework</a>
+        </p>
+
+    </article>
 </body>
 </html>

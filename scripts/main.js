@@ -1,10 +1,11 @@
 (function () {
-    
+
     let blogs = [
+        {title: "Learning to Build with Claude Code Opus 4.5", description: "How AI-assisted development changed my workflow on Lantern and Intel Mesh.", link: "blog/claude-code-opus.html"},
         {title: "Gen AI vs Agentic AI: What I'm Learning and Why It Matters for Security", description: "Understanding the differences between Generative AI and Agentic AI in cybersecurity.", link: "blog/genai-vs-agentic-ai.html"},
         {title: "Lantern: A Practical Lens Into Your Local Network", description: "Understand what is happening on your local network.", link: "blog/lantern.html"},
-        {title: "DEF CON 33: Hacking Conference", description: "A First-Timer’s Experience at the World’s Biggest Hacker Playground", link: "blog/defcon2025.html"},
-        {title: "RSA Conference 2025: 1 Day Pass", description: "A First-Timer’s Experience in Cybersecurity’s Biggest Arena.", link: "blog/rsa2025.html"},
+        {title: "DEF CON 33: Hacking Conference", description: "A First-Timer's Experience at the World's Biggest Hacker Playground", link: "blog/defcon2025.html"},
+        {title: "RSA Conference 2025: 1 Day Pass", description: "A First-Timer's Experience in Cybersecurity's Biggest Arena.", link: "blog/rsa2025.html"},
         {title: "BSides San Francisco: Infosec Conference 2025", description: "Attending the BSides event.", link: "blog/bsidessf2025.html"},
         {title: "Why is Threat Intelligence Important?", description: "Learn the importance of threat intel.", link: "blog/threat_intel.html"},
         {title: "BSides San Francisco: Infosec Conference 2024", description: "Attending the BSides event.", link: "blog/bsidessf2024.html"},
@@ -26,13 +27,13 @@
     let blogsPerPage = 8;
 
     // Retrieve the current page from localStorage or default to 1
-    let currentPage = localStorage.getItem('currentPage') || 1;
+    let currentPage = parseInt(localStorage.getItem('currentPage'), 10) || 1;
 
     function displayBlogs() {
         const start = (currentPage - 1) * blogsPerPage;
         const end = start + blogsPerPage;
         const blogsToDisplay = blogs.slice(start, end);
-        const blogsContainer = document.querySelector('.section-2');
+        const blogsContainer = document.getElementById('blog-list');
 
         // Clear the existing content
         blogsContainer.innerHTML = '';
@@ -40,16 +41,16 @@
         // Create and append the h2 tag
         const h2Tag = document.createElement('h2');
         h2Tag.textContent = 'Recent Posts';
-        h2Tag.style.fontWeight = 'bold';
         blogsContainer.appendChild(h2Tag);
 
         for (const blog of blogsToDisplay) {
             const blogLink = document.createElement('a');
             blogLink.href = blog.link;
+            blogLink.className = 'blog-entry';
             blogLink.textContent = blog.title;
 
             const blogDescription = document.createElement('p');
-            blogDescription.style.fontSize = '0.75rem';
+            blogDescription.className = 'blog-description';
             blogDescription.textContent = blog.description;
 
             blogsContainer.appendChild(blogLink);
@@ -61,15 +62,15 @@
 
     function createPagination() {
         let totalPages = Math.ceil(blogs.length / blogsPerPage);
-        
+
         let paginationContainer = document.createElement('div');
         paginationContainer.className = 'pagination';
-        
+
         for (let i = 1; i <= totalPages; i++) {
             let pageLink = document.createElement('a');
             pageLink.href = "#";
             pageLink.textContent = i;
-            if(i == currentPage) {
+            if(i === currentPage) {
                 pageLink.className = 'active';
             }
             pageLink.addEventListener('click', function(event) {
@@ -82,12 +83,12 @@
                 displayBlogs();
                 updatePagination();
             });
-            
+
             paginationContainer.appendChild(pageLink);
         }
-        
-        let section2 = document.querySelector('.section-2');
-        section2.appendChild(paginationContainer);
+
+        let container = document.getElementById('blog-list');
+        container.appendChild(paginationContainer);
     }
 
     function updatePagination() {

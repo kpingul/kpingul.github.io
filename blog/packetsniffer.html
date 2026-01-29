@@ -4,86 +4,76 @@
     <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Learn about packet sniffing and it's importance">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="./../style.css">
-    <title>Kirck Pingul - Information Security</title>
+    <title>Intro to Packet Sniffing - Kirck Pingul</title>
 </head>
 <body>
-    <div class="grid-2">
-        <div class="section-1">
-            <h2>
-                <a href="/" style="color: #4b4b4b; font-size: 1.6rem;">                   
-                    Kirck Pingul
-                </a>
-                <p style="font-size: 0.8rem">
-                    Information Security
-                </p>
-            </h2>
-            
-            <a href="https://www.twitter.com/kirckp" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.github.com/kpingul" target="_blank" class="fab fa-github"></i></a>
+    <header class="top-bar">
+        <div class="top-bar-inner">
+            <div class="top-bar-brand">
+                <a href="/">Kirck Pingul</a>
+                <span>Security Blog</span>
+            </div>
+            <div class="top-bar-links">
+                <a href="https://www.twitter.com/kirckp" target="_blank" aria-label="Twitter profile"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.github.com/kpingul" target="_blank" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+            </div>
         </div>
-        <div class="section-2">
-            <h2 class="blog-title" >Intro to Packet Sniffing</h2>
-            <a href="https://github.com/kpingul/packetsniffer" style="text-decoration: underline; color: #1463b0 !important" target="_blank">
-                Link to Project on GitHub
-            </a>
-            <p style="margin-top: 15px;">
-                In today's interconnected world, network security is important. One fundamental aspect of this field is understanding network traffic, and that's where the concept of packet sniffing comes into play. Packet sniffing is a method used to monitor and analyze network traffic. By capturing, inspecting, and interpreting the packets that travel through a network, we gain insights into what data is being transferred, how, and by whom.
+    </header>
 
-            </p>
-            <p style="margin-top: 15px;margin-bottom: 10px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
-                What is a Packet?
-            </p>
-            <p>
-                A packet is a fundamental concept that signifies a small portion of data dispatched over a network. Whether you're navigating the internet, sending an email, or streaming a video, the data isn't transmitted as one large block, but rather is broken down into bite-sized pieces called packets. Each packet carries important information, like the sender's and receiver's IP addresses and the actual data content. They traverse the network, often taking different paths, until they reach their destination. Once there, they are reassembled to form the original data. The practice of capturing and analyzing these packets in transit is known as 'packet sniffing'. This technique, when used ethically, is a powerful tool for understanding network behavior, troubleshooting issues, and enhancing network security.
-            </p>
-            <p style="margin-top: 15px;margin-bottom: 10px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
-                The Importance of Packet Sniffing in Security
-            </p>
-            <p>
-                <b>Network Troubleshooting</b>
-            </p>
-            <p>
-                Packet sniffing allows network administrators to troubleshoot network problems by providing a granular view of traffic patterns, identifying bottlenecks, and detecting anomalies.
-            </p>
-            <p>
-                <b>Security Monitoring and Intrusion Detection</b>
-            </p>
-            <p>
-                Packet sniffers can monitor network traffic for suspicious activity, such as an unusually high volume of data being transferred to an external IP address. This can signal a data breach or an ongoing attack.
+    <article class="article-wrapper">
+        <header class="article-header">
+            <h1>Intro to Packet Sniffing</h1>
+        </header>
 
-            </p>
-            <p>
-                <b>Forensic Analysis and Incident Response</b>
-            </p>
-            <p>
-                In the event of a security incident, packet sniffers can be used to perform a detailed analysis of network traffic during the incident timeframe. This can help to understand the incident's scope, its origin, and the attacker's methods.
-            </p>
-            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
-                Introducing PacketSniffer
-            </p>
+        <a href="https://github.com/kpingul/packetsniffer" target="_blank" class="project-link">Link to Project on GitHub</a>
 
-            <p>
-                As an example of a practical tool in this field, I'd like to introduce a project I developed called <a href="https://github.com/kpingul/packetsniffer" style="text-decoration: underline; color: #1463b0 !important; font-size: 1rem !important; display: inline;" target="_blank">PacketSniffer.</a>The tool allows you to capture network traffic based on given preferences such as ports and protocols. I intially developed it to help me understand networking and the importance of packet analysis. Although It is still a work in progress, it provides a more basic and simple interface versus more comprehensive tools like Wireshark. It current only supports Windows 8/8.1/10 and also provides a feature called Packet Visualizer, which displays network traffic using visualizations as shown below.
-            </p>
+        <p>
+            In today's interconnected world, network security is important. One fundamental aspect of this field is understanding network traffic, and that's where the concept of packet sniffing comes into play. Packet sniffing is a method used to monitor and analyze network traffic. By capturing, inspecting, and interpreting the packets that travel through a network, we gain insights into what data is being transferred, how, and by whom.
+        </p>
 
-            <img src="./../images/packetsniffer.png" />
-            <p style="font-size: 0.7rem";>
-                <em>Figure 1: Oubtound traffic on a host shown on Packet Visualizer</em>
-            </p>
+        <h2>What is a Packet?</h2>
+        <p>
+            A packet is a fundamental concept that signifies a small portion of data dispatched over a network. Whether you're navigating the internet, sending an email, or streaming a video, the data isn't transmitted as one large block, but rather is broken down into bite-sized pieces called packets. Each packet carries important information, like the sender's and receiver's IP addresses and the actual data content. They traverse the network, often taking different paths, until they reach their destination. Once there, they are reassembled to form the original data. The practice of capturing and analyzing these packets in transit is known as 'packet sniffing'. This technique, when used ethically, is a powerful tool for understanding network behavior, troubleshooting issues, and enhancing network security.
+        </p>
 
-            <p style="margin-top: 15px; color: #4b4b4b !important; font-size: 1.1rem; font-weight: bold;" >
-                Conclusion
-            </p>
+        <h2>The Importance of Packet Sniffing in Security</h2>
+        <p>
+            <b>Network Troubleshooting</b>
+        </p>
+        <p>
+            Packet sniffing allows network administrators to troubleshoot network problems by providing a granular view of traffic patterns, identifying bottlenecks, and detecting anomalies.
+        </p>
+        <p>
+            <b>Security Monitoring and Intrusion Detection</b>
+        </p>
+        <p>
+            Packet sniffers can monitor network traffic for suspicious activity, such as an unusually high volume of data being transferred to an external IP address. This can signal a data breach or an ongoing attack.
+        </p>
+        <p>
+            <b>Forensic Analysis and Incident Response</b>
+        </p>
+        <p>
+            In the event of a security incident, packet sniffers can be used to perform a detailed analysis of network traffic during the incident timeframe. This can help to understand the incident's scope, its origin, and the attacker's methods.
+        </p>
 
-            <p>
-                Packet sniffing is a vital tool in network security and management. It can help aid in troubleshooting network issues, spotting suspicious activity, and conducting post-incident analysis. By offering insights into traffic patterns and potential threats, packet sniffing can significantly contribute to enhancing and maintaining network security.
-                
-             </p>
-        
-        </div>
-    </div>
+        <h2>Introducing PacketSniffer</h2>
+        <p>
+            As an example of a practical tool in this field, I'd like to introduce a project I developed called <a href="https://github.com/kpingul/packetsniffer" target="_blank">PacketSniffer.</a>The tool allows you to capture network traffic based on given preferences such as ports and protocols. I intially developed it to help me understand networking and the importance of packet analysis. Although It is still a work in progress, it provides a more basic and simple interface versus more comprehensive tools like Wireshark. It current only supports Windows 8/8.1/10 and also provides a feature called Packet Visualizer, which displays network traffic using visualizations as shown below.
+        </p>
+
+        <img src="./../images/packetsniffer.png" alt="PacketSniffer Packet Visualizer showing outbound traffic on a host" loading="lazy" />
+        <p class="fig-caption">
+            <em>Figure 1: Oubtound traffic on a host shown on Packet Visualizer</em>
+        </p>
+
+        <h2>Conclusion</h2>
+        <p>
+            Packet sniffing is a vital tool in network security and management. It can help aid in troubleshooting network issues, spotting suspicious activity, and conducting post-incident analysis. By offering insights into traffic patterns and potential threats, packet sniffing can significantly contribute to enhancing and maintaining network security.
+        </p>
+
+    </article>
 </body>
 </html>
