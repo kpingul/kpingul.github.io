@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How AI-assisted development changed my workflow on Lantern and Intel Mesh.">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../style.css">
+    <title>Learning to Build with Claude Code Opus 4.5 - Kirck Pingul</title>
+</head>
+<body>
+    <header class="top-bar">
+        <div class="top-bar-inner">
+            <div class="top-bar-brand">
+                <a href="/">Kirck Pingul</a>
+                <span>Security Blog</span>
+            </div>
+            <div class="top-bar-links">
+                <a href="https://www.twitter.com/kirckp" target="_blank" aria-label="Twitter profile"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.github.com/kpingul" target="_blank" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <article class="article-wrapper">
+
+        <header class="article-header">
+            <h1>Building My First Security Lab</h1>
+        </header>
+        <h2>TL;DR</h2>
+        <p>
+            The goal of this lab was to explore how an AI agent might assist with the heavy lifting of security operations. By setting up an experimental pipeline, I wanted to see if an autonomous system could help triage high-volume alerts, filtering out the noise and highlighting the critical data points that actually need a human's attention.  
+        </p>
+        
+        <h2>Why Build a Security Lab?</h2>           
+
+        <p>
+            It’s the ultimate "sandbox", a risk-free environment where you can build, break, and rebuild systems to understand how they actually work under the hood. For me, this lab was about bridging the gap between theoretical knowledge and hands-on proficiency.
+        </p>
+
+        <p>
+            Learning through Trial and Error In a professional setting, there's rarely room to "break things" just to see what happens. This lab was my chance to bridge that gap. It became a personal sandbox where I could misconfigure a firewall, detonate a test script, and see exactly how those mistakes translate into logs. Developing that kind of troubleshooting intuition is exactly why I wanted to dive into this project, it's where the theory starts making sense.        </p>
+
+        <h2>The Goal: Testing the AI Analyst</h2>
+        <p>
+            The primary objective of this project was to explore if an AI-driven agent could assist with the critical first stage of security operations: Tier 1 triage. By looking into the space between raw telemetry and human decision-making, I put together a prototype to see if a reasoning system could do more than just aggregate alerts. The goal was to see if an agentic system could effectively filter out environmental noise and provide context-rich escalations, hopefully allowing human analysts to eventually focus on complex incident response rather than manual log review.        </p>
+        <p>
+
+        <h2>
+            The Hardware: Building My Mini Server Rack
+        </h2>
+        <p>
+            To make this vision a reality, I needed a hardware setup that was both powerful and organized. I decided to build my own custom mini server rack to house the infrastructure. This wasn't just about aesthetics; it was about creating a modular, high-performance environment that could handle the simultaneous demands of a virtualized Active Directory and local AI inference.
+        </p>    
+        <p>
+            The Rack Specs:
+        </p>
+        <ul>
+            <li>Compute: Two mini PCs, both an AMD Ryzen 7 6800H (8C/16T).</li>
+            <li>Memory & Storage: 32GB DDR5 RAM and 1TB NVMe SSD.</li>
+            <li>Networking: A dedicated managed switch for VLAN isolation, ensuring lab traffic stays separate from my home network.</li>
+            <li>Console: A mini-display for direct management and monitoring.</li>
+        </ul>
+
+        <img src="./../images/mini_svr_rack.jpeg" alt="BSides San Francisco 2025 conference" loading="lazy" style="width: 60%;" />
+
+        <h2>
+            Building the Cyber Range
+        </h2>
+        <p>
+            Building a lab from scratch is where the theory finally meets reality. For this setup, I used Proxmox as the underlying hypervisor and Ludus to manage the "Range-as-Code".
+        </p>
+
+        <h3>Why Ludus?</h3>
+        <p>
+            Ludus is essentially a powerhouse for lab automation. Instead of spending hours manually clicking through ISO installers and network configurations, Ludus uses YAML blueprints and Ansible to deploy entire environments—complete with Domain Controllers, workstations, and security tools—in minutes.
+        </p>
+        <p>
+            For this specific project, I used GOAD-Lite (Game of Active Directory) within Ludus. This provided a pre-configured, vulnerable Active Directory environment that served as the perfect target for testing detection engineering and AI triage.
+        </p>
+
+        <img src="./../images/ludus_pve.png" alt="BSides San Francisco 2025 conference" loading="lazy" style="width: 100%;" />
+
+        <h3>
+            My Range Configuration (config.yml)
+        </h3>
+        <p>
+            This file is the source of truth for the lab. It defines a hybrid environment of Windows targets and Linux-based security servers, creating a realistic corporate footprint. I have hosted my full range configuration on GitHub for anyone interested in the specifics:  <a href="https://github.com/kpingul/ludus-config/blob/main/config.yml">kpingul/ludus-config</a>
+        </p>
+        <h3>
+            The Simulators: Caldera & GHOSTS
+        </h3>
+        <p>
+            What makes this config interesting for AI research is the "Signal-to-Noise" ratio. By loading the Windows 11 target with both Caldera and GHOSTS, I created a challenging environment for the agent:
+        </p>
+        <ul>
+            <li>
+                MITRE Caldera (The Signal): An automated adversary emulation framework. I use it to launch TTPs like LSASS dumping or credential access.
+                <img src="./../images/caldera.png" alt="Caldera" loading="lazy" style="width: 100%;" />
+
+            </li>
+            
+            <li>
+                GHOSTS (The Noise): This is the secret sauce. It simulates "Non-Player Characters" (NPCs) that browse the web and open docs. The AI must learn to ignore GHOSTS activity while flagging Caldera attacks.
+                <img src="./../images/ghosts.png" alt="ghosts" loading="lazy" style="width: 100%;" />
+
+            </li>
+        </ul>
+        <h2>
+            Designing the AI Agent Tier 1 Analyst
+        </h2>
+        <p>
+            The core of this project isn't just about passing data to an LLM; it’s about Agentic Logic. Unlike a standard script that follows a linear path (if A, then B), an agentic system uses a "Reasoning Loop." It treats the security alert as a starting point and uses its internal logic to investigate the context before reaching a conclusion.        </p>
+        <h3>
+            1. The Power of the System Prompt
+        </h3>
+        <p>
+            In an agentic system, the prompt isn't just instructions—it is the Operating Manual. The prompt I used defines the "boundaries of thought" for the AI.
+        </p>
+
+        <ul>
+            <li>Persona Enforcement: By labeling the AI an "Expert SOC Triage Analyst," we set a high bar for the technicality and tone of the output.</li>
+            <li>Operational Constraints: The strict "NO CONTAINMENT" rule is vital. It ensures the AI stays in its lane as an investigator, preventing "hallucinations" where the AI might accidentally recommend blocking a critical Domain Controller.</li>
+            <li>The Reasoning Framework: By mandating "Entity-Centric Triage," we force the AI to look for the who, what, and where. It must connect the user account to the process ID and the network destination to build a complete story.</li>
+        </ul>
+        <p>Here's the prompt I wrote:</p>
+        <pre style="background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-left: 5px solid #6b7280;
+            color: #333;
+            page-break-inside: avoid;
+            font-family: monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 1.6em;
+            max-width: 100%;
+            overflow: auto;
+            padding: 1em 1.5em;
+            display: block;
+            word-wrap: break-word;
+            white-space: pre-wrap;">
+            <code>
+You are an Expert SOC Triage Analyst. Your primary function is to ingest security alerts (such as Wazuh telemetry), perform rapid initial triage, and determine whether an event requires escalation to the Incident Response (IR) team.
+
+Your strict operational constraint:
+You are a triage and analysis agent only. You must NOT execute, recommend, or simulate any containment, mitigation, or remediation actions (e.g., do not block IPs, kill processes, or isolate hosts). Your output is strictly informational to empower the next tier of analysts.
+
+### MODERN SOC ANALYSIS DIRECTIVES
+1. Entity-Centric Triage: Trace the relationship between the Host, User, Process Tree, and Network Connections.
+2. Threat Intelligence & Network Correlation: Evaluate IPs, domains, hashes, and network flow anomalies.
+3. MITRE ATT&CK Mapping: Contextualize behavior by mapping to specific Tactics and Techniques.
+4. Fidelity & Alert Fatigue Assessment: Identify if the alert is a False Positive (FP) caused by benign admin behavior or scanners.
+5. Assume Breach Mentality: Prioritize credential access, defense evasion, or lateral movement indicators.
+
+### TRIAGE DISPOSITIONS
+Assign one of the following dispositions based on the evidence:
+- FALSE POSITIVE (FP): Detection fired incorrectly on benign/expected behavior. (Close Alert)
+- BENIGN TRUE POSITIVE (BTP): Rule fired correctly, but activity is authorized. (Close Alert)
+- SUSPICIOUS: Anomalous behavior lacking definitive proof of malicious intent. (Escalate to Tier 2)
+- TRUE POSITIVE (TP) / MALICIOUS: Confirmed IOC or clear adversarial behavior. (Critical Escalation to IR)
+
+### STRICT OUTPUT FORMAT
+You must output your analysis in the following structured format. Do not deviate.
+
+Disposition: [False Positive | Benign True Positive | Suspicious | True Positive]
+Escalation Decision: [Close Alert | Escalate to Tier 2 | Escalate to IR]
+Confidence Score: [0-100]%
+
+1. Executive Summary:
+[One concise sentence summarizing the 'Who, What, and Where' of the alert.]
+
+2. Entity Extraction:
+- Target Host: [Hostname/IP]
+- Actor/User: [Account Name]
+- Process: [Executable Name and PID]
+- Network Indicators: [Source/Dest IPs, Ports, or Domains involved]
+
+3. Analytical Findings:
+[A brief, 2-3 sentence technical justification for your disposition explaining why it is benign, suspicious, or malicious based on telemetry fields.]
+
+4. MITRE ATT&CK Context:
+- Tactic: [e.g., Execution, Credential Access]
+- Technique: [e.g., T1059.001 PowerShell]
+
+5. Escalation Handoff & Intelligence Gaps:
+- Missing Telemetry: [What data is missing that would increase your confidence?]
+- Recommended Tier 2 Action: [What exact query or search should the next analyst run?]
+- Detection Tuning Note: [Optional: 1-sentence recommendation to tune the rule.]
+        </code>
+        </pre>
+
+        <h3>
+            2. What Happens When an Alert Surfaces?
+        </h3>
+        <p>
+            The lifecycle of an alert in this lab follows a high-fidelity pipeline:
+        </p>
+        <ul>
+            <li>1. Ingestion & Sanitization: When Caldera triggers an attack, Wazuh (via Sysmon) captures the telemetry. This raw JSON is often thousands of lines long. My preprocessor strips this down to the "vital signs"—user, process, parent process, and command line—to save on token costs and reduce noise.</li>
+            <li>2. Stateful Reasoning: The agent receives the cleaned data. Using LangGraph, the agent enters a state where it "thinks" through the directives. It checks the telemetry against MITRE ATT&CK patterns.</li>
+            <li>3. The Analysis: The AI doesn't just say "this is bad." It provides a Disposition. It decides if the activity is a True Positive (TP) or a Benign True Positive (BTP)—which is common when GHOSTS is running normal user activity.</li>
+        </ul>
+        <h3>
+            3. The Slack Webhook: Closing the Loop
+        </h3>
+        <p>
+            The final step is the Handoff. A SOC is only as fast as its communication. I integrated a Slack Webhook to ensure the AI's findings aren't buried in a log file.
+        </p>
+        <ul>
+            <li>Immediate Escalation: As soon as the agent reaches a "Suspicious" or "True Positive" disposition, it pushes a formatted block to Slack.</li>
+            <li>Structured Output: Because the prompt enforces a "Strict Output Format," the Slack message is easy to read at a glance. It includes the Confidence Score and the Recommended Tier 2 Action, telling me exactly what I need to verify next.</li>
+        </ul>
+        <img src="./../images/slack_alert.png" alt="BSides San Francisco 2025 conference" loading="lazy" style="width: 100%;" />
+        <h2>
+            Lessons Learned
+        </h2>
+        <p>
+            Building this lab was a steep learning curve that highlighted the practical realities of AI in security operations:
+        </p>
+        <ul>
+            <li>Logging Fidelity: The AI is only as good as its sensors. Without deep process visibility—like command-line arguments and parent-child relationships—the agent is functionally blind to sophisticated TTPs.</li>
+            <li>Token Management: Raw security logs are verbose and full of "fluff". Implementing a preprocessor to strip redundant metadata was vital to keeping reasoning fast, accurate, and cost-effective.</li>
+            <li>Signal vs. Noise: The agent's ability to ignore GHOSTS-driven background noise while flagging Caldera-driven credential dumps confirmed that agentic logic handles nuance better than static, boolean rules.</li>
+            <li>Human-in-the-Loop: Even with high confidence scores, an automated "checkpoint" is essential. Keeping the AI's role informational ensures that high-stakes remediation remains a human-led decision.</li>
+        </ul>
+        <h2>
+            Final Thoughts
+        </h2>
+        <p>
+            This project proved that while AI can significantly reduce alert fatigue, it requires a foundation of high-fidelity data and strict operational guardrails. Most importantly, this lab taught me that the best way to understand these emerging technologies is to simply start building. I plan to continue experimenting with different agentic frameworks and expanding my lab’s capabilities, as the process of trial and error remains the most effective way to learn in this rapidly evolving field.        
+        </p>
+
+    </article>
+
+</body>
+</html>
