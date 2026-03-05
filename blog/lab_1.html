@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How AI-assisted development changed my workflow on Lantern and Intel Mesh.">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../style.css">
+    <title>Learning to Build with Claude Code Opus 4.5 - Kirck Pingul</title>
+</head>
+<body>
+    <header class="top-bar">
+        <div class="top-bar-inner">
+            <div class="top-bar-brand">
+                <a href="/">Kirck Pingul</a>
+                <span>Security Blog</span>
+            </div>
+            <div class="top-bar-links">
+                <a href="https://www.twitter.com/kirckp" target="_blank" aria-label="Twitter profile"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.github.com/kpingul" target="_blank" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <article class="article-wrapper">
+
+        <header class="article-header">
+            <h1>Building My First Security Lab: Experimenting with AI Agents (Part 1)</h1>
+        </header>
+        <p>
+            <em>Note: This is Part 1 of a two-part series. In this post, I’ll cover the hardware and infrastructure build of my home lab. In Part 2, we’ll dive into how I built an AI-powered Tier 1 Analyst to triage the alerts this lab generates.</em>
+        </p>
+
+        <h2>TL;DR</h2>
+        <p>
+            The goal of this lab was to explore how an AI-driven agent could augment security operations. By building an experimental agent, I tested whether it could support alert triage, ingesting security telemetry, reducing false positives, and surfacing high-fidelity findings that actually require human investigation.        </p>
+        <p>
+
+        <img src="./../images/mini_svr_rack.jpeg" alt="BSides San Francisco 2025 conference" loading="lazy" style="width: 60%;" />
+
+        
+        <h2>Why Build a Security Lab?</h2>           
+
+        <p>
+            It’s the ultimate "sandbox", a risk-free environment where you can build, break, and rebuild systems to understand how they actually work under the hood. For me, this lab was about bridging the gap between theoretical knowledge and hands-on proficiency.
+        </p>
+
+        <p>
+            Learning through Trial and Error In a professional setting, there's rarely room to "break things" just to see what happens. This lab was my chance to bridge that gap. It became a personal sandbox where I could misconfigure a firewall, detonate a test script, and see exactly how those mistakes translate into logs. Developing that kind of troubleshooting intuition is exactly why I wanted to dive into this project, it's where the theory starts making sense.        </p>
+
+        <h2>
+            The Hardware: Building My Mini Server Rack
+        </h2>
+        <p>
+            To make this vision a reality, I needed a hardware setup that was both powerful and organized. I decided to build my own custom mini server rack to house the infrastructure. This wasn't just about aesthetics; it was about creating a modular, high-performance environment that could handle the simultaneous demands of a virtualized Active Directory environment.
+        </p>    
+        <p>
+            The Rack Specs:
+        </p>
+        <ul>
+            <li>Compute: Two mini PCs, both an AMD Ryzen 7 6800H (8C/16T).</li>
+            <li>Memory & Storage: 32GB DDR5 RAM and 1TB NVMe SSD.</li>
+            <li>Networking: A dedicated managed switch for VLAN isolation, ensuring lab traffic stays separate from my home network.</li>
+            <li>Console: A mini-display for direct management and monitoring.</li>
+        </ul>
+
+        <img src="./../images/mini_svr_rack_2.jpg" alt="BSides San Francisco 2025 conference" loading="lazy" style="width: 60%;" />
+
+        <h2>
+            Building the Cyber Range
+        </h2>
+        <p>
+            Building a lab from scratch is where the theory finally meets reality. For this setup, I used Proxmox as the underlying hypervisor and Ludus to manage the "Range-as-Code".
+        </p>
+
+        <h3>Why Ludus?</h3>
+        <p>
+           Ludus is a free, open-source, and automated cyber range platform designed to build, manage, and tear down virtualized, on-premise, or cloud-hosted cybersecurity test environments. Built on top of Proxmox and leveraging Ansible and Packer, it allows you to quickly deploy complex, realistic networks—such as Active Directory labs—using a single YAML configuration file.
+        </p>
+        <p>
+            For this specific project, I used GOAD-Lite (Game of Active Directory) within Ludus. This provided a pre-configured, vulnerable Active Directory environment that served as the perfect target for testing.
+        </p>
+
+        <img src="./../images/ludus_pve.png" alt="BSides San Francisco 2025 conference" loading="lazy" style="width: 100%;" />
+
+        <h3>
+            My Range Configuration (config.yml)
+        </h3>
+        <p>
+            This file is the source of truth for the lab. It defines a hybrid environment of Windows targets and Linux-based security servers, creating a realistic corporate footprint. I have hosted my full range configuration on GitHub for anyone interested in the specifics:  <a href="https://github.com/kpingul/ludus-config/blob/main/config.yml">kpingul/ludus-config</a>
+        </p>
+        <h3>
+            The Simulators: Caldera & GHOSTS
+        </h3>
+        <p>
+            What makes this config interesting for AI research is the "Signal-to-Noise" ratio. By loading the Windows 11 target with both Caldera and GHOSTS, I created a challenging environment for the agent:
+        </p>
+        <ul>
+            <li>
+                MITRE Caldera (The Signal): An automated adversary emulation framework. I use it to launch TTPs like LSASS dumping or credential access.
+                <img src="./../images/caldera.png" alt="Caldera" loading="lazy" style="width: 100%;" />
+
+            </li>
+            
+            <li>
+                GHOSTS (The Noise): This is the secret sauce. It simulates "Non-Player Characters" (NPCs) that browse the web and open docs. The AI must learn to ignore GHOSTS activity while flagging Caldera attacks.
+                <img src="./../images/ghosts.png" alt="ghosts" loading="lazy" style="width: 100%;" />
+
+            </li>
+        </ul>
+
+           <h2>
+            Lessons Learned
+        </h2>
+
+        <ul>
+            <li>Hardware overhead is real: Running a full AD environment alongside security stacks requires serious compute.</li>
+            <li>Automation is the only way: Using "Range-as-Code" with Ludus allowed me to blow the lab away and rebuild it in 15 minutes when I inevitably broke something.</li>
+            <li>Telemetry Fidelity: I learned early on that a SIEM is only as good as the data you feed it. Getting Wazuh to capture the relevant data required was more than just a default install; I had to fine-tune the agents and integrate Sysmon to ensure I was getting the deep process-level telemetry needed for any serious analysis.</li>
+        </ul>
+        <p>
+            <em>
+                Stay Tuned for Part 2 where I dive into how I built an AI-powered Tier 1 Analyst to triage the alerts this lab generates.
+            </em>
+        </p>
+    </article>
+
+</body>
+</html>
