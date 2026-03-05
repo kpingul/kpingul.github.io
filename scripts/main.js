@@ -2,7 +2,7 @@
 
     let blogs = [
         // {title: "Building My First Security Lab: Experimenting with AI Agents (Part 2)", description: "Experimenting with AI Agents", link: "blog/lab_2.html"},
-        {title: "Building My First Security Lab: Experimenting with AI Agents (Part 1)", description: "Building the lab", link: "blog/lab_1.html"},
+        {title: "Building My First Security Lab (Part 1)", description: "Building the lab", link: "blog/lab_1.html"},
         {title: "Learning to Build with Claude Code Opus 4.5", description: "How AI-assisted development changed my workflow on Lantern and Intel Mesh.", link: "blog/claude-code-opus.html"},
         {title: "Gen AI vs Agentic AI: What I'm Learning and Why It Matters for Security", description: "Understanding the differences between Generative AI and Agentic AI in cybersecurity.", link: "blog/genai-vs-agentic-ai.html"},
         {title: "Lantern: A Practical Lens Into Your Local Network", description: "Understand what is happening on your local network.", link: "blog/lantern.html"},
