@@ -28,10 +28,14 @@
         <header class="article-header">
             <h1>Building My First Security Lab</h1>
         </header>
+        <img src="./../images/mini_svr_rack.jpeg" alt="BSides San Francisco 2025 conference" loading="lazy" style="width: 60%;" />
+
         <h2>TL;DR</h2>
         <p>
-            The goal of this lab was to explore how an AI agent might assist with the heavy lifting of security operations. By setting up an experimental pipeline, I wanted to see if an autonomous system could help triage high-volume alerts, filtering out the noise and highlighting the critical data points that actually need a human's attention.  
+            The goal of this lab was to explore how an AI agent can assist in security operations. By setting up an experimental pipeline, I wanted to test if an autonomous system could help triage high-volume alerts, filtering out the noise and highlighting the critical data points that actually need a human's attention.
         </p>
+        <p>
+            I wanted to look into the space between raw telemetry and human decision-making to see if a reasoning system could do more than just aggregate alerts. By putting together this prototype, I aimed to see if an agentic system could effectively suppress environmental noise and surface the high-fidelity signals that require human intervention. Ultimately, this project explores how autonomous systems can provide context-rich escalations, hopefully allowing human analysts to eventually focus on complex incident response rather than manual log review.        </p>
         
         <h2>Why Build a Security Lab?</h2>           
 
@@ -51,7 +55,7 @@
             The Hardware: Building My Mini Server Rack
         </h2>
         <p>
-            To make this vision a reality, I needed a hardware setup that was both powerful and organized. I decided to build my own custom mini server rack to house the infrastructure. This wasn't just about aesthetics; it was about creating a modular, high-performance environment that could handle the simultaneous demands of a virtualized Active Directory and local AI inference.
+            To make this vision a reality, I needed a hardware setup that was both powerful and organized. I decided to build my own custom mini server rack to house the infrastructure. This wasn't just about aesthetics; it was about creating a modular, high-performance environment that could handle the simultaneous demands of a virtualized Active Directory environment.
         </p>    
         <p>
             The Rack Specs:
@@ -63,7 +67,7 @@
             <li>Console: A mini-display for direct management and monitoring.</li>
         </ul>
 
-        <img src="./../images/mini_svr_rack.jpeg" alt="BSides San Francisco 2025 conference" loading="lazy" style="width: 60%;" />
+        <img src="./../images/mini_svr_rack_2.jpg" alt="BSides San Francisco 2025 conference" loading="lazy" style="width: 60%;" />
 
         <h2>
             Building the Cyber Range
@@ -74,10 +78,10 @@
 
         <h3>Why Ludus?</h3>
         <p>
-            Ludus is essentially a powerhouse for lab automation. Instead of spending hours manually clicking through ISO installers and network configurations, Ludus uses YAML blueprints and Ansible to deploy entire environments—complete with Domain Controllers, workstations, and security tools—in minutes.
+           Ludus is a free, open-source, and automated cyber range platform designed to build, manage, and tear down virtualized, on-premise, or cloud-hosted cybersecurity test environments. Built on top of Proxmox and leveraging Ansible and Packer, it allows you to quickly deploy complex, realistic networks—such as Active Directory labs—using a single YAML configuration file.
         </p>
         <p>
-            For this specific project, I used GOAD-Lite (Game of Active Directory) within Ludus. This provided a pre-configured, vulnerable Active Directory environment that served as the perfect target for testing detection engineering and AI triage.
+            For this specific project, I used GOAD-Lite (Game of Active Directory) within Ludus. This provided a pre-configured, vulnerable Active Directory environment that served as the perfect target for testing.
         </p>
 
         <img src="./../images/ludus_pve.png" alt="BSides San Francisco 2025 conference" loading="lazy" style="width: 100%;" />
@@ -108,21 +112,22 @@
             </li>
         </ul>
         <h2>
-            Designing the AI Agent Tier 1 Analyst
+            Experimenting with an AI-Powered Tier 1 Analyst
         </h2>
         <p>
-            The core of this project isn't just about passing data to an LLM; it’s about Agentic Logic. Unlike a standard script that follows a linear path (if A, then B), an agentic system uses a "Reasoning Loop." It treats the security alert as a starting point and uses its internal logic to investigate the context before reaching a conclusion.        </p>
+            The core of this project was to see how an LLM handles raw security telemetry. Rather than just asking a chatbot "is this bad?", I wanted to build a pipeline that forces the model to act like an investigator. By feeding it specific data and strict directives, I wanted to see if I could transform a general-purpose model into a specialized triage assistant.
+        </p>
         <h3>
-            1. The Power of the System Prompt
+            1. The Operating Manual (The Prompt)
         </h3>
         <p>
-            In an agentic system, the prompt isn't just instructions—it is the Operating Manual. The prompt I used defines the "boundaries of thought" for the AI.
+            Instead of just giving the AI instructions, I treated the system prompt as a formal Operating Manual. This keeps the analysis technical and prevents the AI from making up nonsense.
         </p>
 
         <ul>
-            <li>Persona Enforcement: By labeling the AI an "Expert SOC Triage Analyst," we set a high bar for the technicality and tone of the output.</li>
-            <li>Operational Constraints: The strict "NO CONTAINMENT" rule is vital. It ensures the AI stays in its lane as an investigator, preventing "hallucinations" where the AI might accidentally recommend blocking a critical Domain Controller.</li>
-            <li>The Reasoning Framework: By mandating "Entity-Centric Triage," we force the AI to look for the who, what, and where. It must connect the user account to the process ID and the network destination to build a complete story.</li>
+            <li>Persona: I set it as an "Expert SOC Triage Analyst" to ensure the tone stays professional and technical.</li>
+            <li>Safety Rails: I added a hard "NO CONTAINMENT" rule. This ensures the AI only investigates and never recommends disruptive actions, like accidentally suggesting I shut down a Domain Controller.</li>
+            <li>The Workflow: I mandated "Entity-Centric Triage," forcing the AI to link relevant data sources together to tell a complete story.</li>
         </ul>
         <p>Here's the prompt I wrote:</p>
         <pre style="background-color: #f8f9fa;
@@ -191,21 +196,21 @@ Confidence Score: [0-100]%
         </pre>
 
         <h3>
-            2. What Happens When an Alert Surfaces?
+            2. The Alert Pipeline
         </h3>
         <p>
-            The lifecycle of an alert in this lab follows a high-fidelity pipeline:
+            When an alert triggers, it goes through a three-step lifecycle:
         </p>
         <ul>
-            <li>1. Ingestion & Sanitization: When Caldera triggers an attack, Wazuh (via Sysmon) captures the telemetry. This raw JSON is often thousands of lines long. My preprocessor strips this down to the "vital signs"—user, process, parent process, and command line—to save on token costs and reduce noise.</li>
-            <li>2. Stateful Reasoning: The agent receives the cleaned data. Using LangGraph, the agent enters a state where it "thinks" through the directives. It checks the telemetry against MITRE ATT&CK patterns.</li>
-            <li>3. The Analysis: The AI doesn't just say "this is bad." It provides a Disposition. It decides if the activity is a True Positive (TP) or a Benign True Positive (BTP)—which is common when GHOSTS is running normal user activity.</li>
+            <li>1. Sanitization: Raw logs are thousands of lines long. I use a preprocessor to strip the "fluff" and send only the vital signs (User, Process, Command Line) to the LLM to save on costs and keep the analysis sharp.</li>
+            <li>2. Assessment: The AI receives the clean data and evaluates it against the MITRE ATT&CK framework.</li>
+            <li>3. Disposition: The AI assigns a status, like True Positive (TP) for an actual attack or Benign True Positive (BTP) for normal background noise.</li>
         </ul>
         <h3>
-            3. The Slack Webhook: Closing the Loop
+            3. Real-Time Handoff (Slack)
         </h3>
         <p>
-            The final step is the Handoff. A SOC is only as fast as its communication. I integrated a Slack Webhook to ensure the AI's findings aren't buried in a log file.
+            A SOC is only useful if it communicates. I integrated a Slack Webhook so I don't have to go hunting for logs.        
         </p>
         <ul>
             <li>Immediate Escalation: As soon as the agent reaches a "Suspicious" or "True Positive" disposition, it pushes a formatted block to Slack.</li>
