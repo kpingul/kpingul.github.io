@@ -28,12 +28,12 @@
             <h1>Building My First Security Lab (Part 1)</h1>
         </header>
         <p>
-            <em>Note: This is Part 1 of a three-part series. In this post, I’ll cover the hardware and infrastructure build of my home lab. In Part 2, we’ll dive into how I built an AI-powered Tier 1 Analyst. Lastly, in Part 3, I bring everything together and put the agent to the test.</em>
+            There’s something about building your own home lab that makes security concepts finally click. It’s the ultimate "sandbox" a risk-free environment where you can build, break, and rebuild systems to understand how they actually work under the hood. For me, this project was about bridging the gap between reading the theory and actually doing the work, providing a dedicated space to experiment with everything from AI-driven security to the latest defensive and offensive tools.
         </p>
 
         <h2>TL;DR</h2>
         <p>
-            The goal of this lab was to explore how an AI-driven agent could augment security operations. By building an experimental agent, I tested whether it could support alert triage, ingesting security telemetry, reducing false positives, and surfacing high-fidelity findings that actually require human investigation.        </p>
+            I built this lab as a way to get more hands-on experience and create a flexible space for future projects. It’s a straightforward setup designed to handle a variety of experiments—whether that's testing agentic AI, exploring Red and Blue team workflows, or safely analyzing malware without risking my primary network.
         <p>
 
         <img src="./../images/mini_svr_rack.jpeg" alt="BSides San Francisco 2025 conference" loading="lazy" style="width: 60%;" />
@@ -42,11 +42,9 @@
         <h2>Why Build a Security Lab?</h2>           
 
         <p>
-            It’s the ultimate "sandbox", a risk-free environment where you can build, break, and rebuild systems to understand how they actually work under the hood. For me, this lab was about bridging the gap between theoretical knowledge and hands-on proficiency.
+            It’s a personal playground where I can misconfigure a firewall, detonate a test script, or launch an exploit and see exactly how those actions translate into logs. Developing that kind of troubleshooting intuition is exactly why I wanted to dive into this project—it's where the theory starts making sense. Having a local lab also allows for more aggressive experimentation that wouldn't be feasible in a shared or production environment.
         </p>
 
-        <p>
-            Learning through Trial and Error In a professional setting, there's rarely room to "break things" just to see what happens. This lab was my chance to bridge that gap. It became a personal sandbox where I could misconfigure a firewall, detonate a test script, and see exactly how those mistakes translate into logs. Developing that kind of troubleshooting intuition is exactly why I wanted to dive into this project, it's where the theory starts making sense.        </p>
 
         <h2>
             The Hardware: Building My Mini Server Rack
@@ -119,9 +117,8 @@
             <li>Telemetry Fidelity: I learned early on that a SIEM is only as good as the data you feed it. Getting Wazuh to capture the relevant data required was more than just a default install; I had to fine-tune the agents and integrate Sysmon to ensure I was getting the deep process-level telemetry needed for any serious analysis.</li>
         </ul>
         <p>
-            <em>
-                Stay Tuned for Part 2 where I dive into how I built an AI-powered Tier 1 Analyst, then Part 3 where I bring everything together and put the agent to the test. 
-            </em>
+            This lab is a living project. Moving forward, I plan to use this infrastructure as a blank canvas for general security research, whether that’s experimenting with agentic AI, refining Red/Blue team methodologies, or safely dissecting malware to understand the latest threats.
+        
         </p>
     </article>
 
