@@ -2,6 +2,7 @@
 
     let blogs = [
         // {title: "Building My First Security Lab: Experimenting with AI Agents (Part 2)", description: "Experimenting with AI Agents", link: "blog/lab_2.html"},
+        {title: "BSides San Francisco: Infosec Conference 2026", description: "Attending the BSides event.", link: "blog/bsidessf2026.html"},
         {title: "Building My First Security Lab", description: "A personal sandbox for exploring Red/Blue team tools", link: "blog/lab_1.html"},
         {title: "Learning to Build with Claude Code Opus 4.5", description: "How AI-assisted development changed my workflow on Lantern and Intel Mesh.", link: "blog/claude-code-opus.html"},
         {title: "Gen AI vs Agentic AI: What I'm Learning and Why It Matters for Security", description: "Understanding the differences between Generative AI and Agentic AI in cybersecurity.", link: "blog/genai-vs-agentic-ai.html"},
