@@ -30,10 +30,10 @@
         <p>
             BSidesSF 2026 was my fourth year at the conference. The theme, "The Musical," was a perfect backdrop for the discussions on the orchestration required to manage today’s security challenges. This year, the focus was on the technical reality of securing autonomous agents and handling the scale of modern production.
         </p>
-            A major highlight was the deep dive into the attack surface of CLI agents like Gemini, Claude, and Codex. The sessions looked at how systemic flaws, including command injection and workspace escapes, can lead to cross-process RCE. It is a strong argument for prioritizing sandboxing and verifiability as these agents gain more autonomy in their workflows.
+            One of the talks I attended was about the attack surface of CLI agents like Gemini, Claude, and Codex. The session looked at how systemic flaws, including command injection and workspace escapes, can lead to cross-process RCE. It is a strong argument for prioritizing sandboxing and verifiability as these agents gain more autonomy in our workflows.
         </p>
         <p>
-            The technical breakdown of the one-click RCE chain in OpenClaw was especially eye-opening. It demonstrated how a configuration logic vulnerability could be combined with Cross-Site WebSocket Hijacking to bypass sandboxing and user approval guardrails. This case study proved that simple user prompts are not enough to secure agentic platforms.
+            Another technical highlight was the deep dive into CVE-2026-25253, an actual one-click RCE chain in OpenClaw. The presentation dissected how a configuration logic vulnerability could be combined with Cross-Site WebSocket Hijacking to bypass network defenses, sandboxing, and user approval guardrails to take over an AI assistant. Seeing such a detailed breakdown of this vulnerability proved that simple user prompts or basic isolation are not enough to secure agentic platforms.
         </p>
         <p>
             There was also a lot of discussion about the scale of the npm supply chain. With over 140,000 updates happening every day, manual review is impossible. We are seeing a move toward using automated orchestration to maintain supply chain integrity without breaking the speed of development.
