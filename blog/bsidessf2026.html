@@ -28,14 +28,23 @@
         </header>
 
         <p>
-            BSidesSF 2026 marked my fourth time attending the conference, and it was a fascinating evolution from the <a href="https://kirck.dev/blog/bsidessf2025.html">AI-centric discussions of 2025</a>. Building off last year's trends, the conversation has matured from general AI awareness into a palpable focus on the security of autonomous agents.</p>
+            BSidesSF 2026 was my fourth year at the conference. The theme, "The Musical," was a perfect backdrop for the discussions on the orchestration required to manage today’s security challenges. This year, the focus was on the technical reality of securing autonomous agents and handling the scale of modern production.
+        </p>
+            A major highlight was the deep dive into the attack surface of CLI agents like Gemini, Claude, and Codex. The sessions looked at how systemic flaws, including command injection and workspace escapes, can lead to cross-process RCE. It is a strong argument for prioritizing sandboxing and verifiability as these agents gain more autonomy in their workflows.
+        </p>
         <p>
-            Throughout the sessions, there was a clear shift toward practical defense in an increasingly automated world. Talks like "Not My Vibe: When AI Coding Agents Go Off the Rails" highlighted the real-world risks of moving from AI assistants to autonomous "assassins," exemplified by deep dives into vulnerabilities like CVE-2026-25253 that can achieve 1-click RCE. The "musical" theme of the event underscored this need for orchestration, especially when tackling the staggering scale of the npm supply chain, where over 140,000 daily updates demand a level of "watching the watchmen" that we are still struggling to perfect.        </p>
+            The technical breakdown of the one-click RCE chain in OpenClaw was especially eye-opening. It demonstrated how a configuration logic vulnerability could be combined with Cross-Site WebSocket Hijacking to bypass sandboxing and user approval guardrails. This case study proved that simple user prompts are not enough to secure agentic platforms.
+        </p>
         <p>
-            The human element remained a cornerstone of the event, framed this year through the lens of history and adaptation. Sessions such as "Let's Do the Timewarp Again!" reminded us that while our tools change -moving from old patterns to paved paths -the need for empathy, collaboration, and a "look back to move forward" remains constant. It’s the collective intelligence of the community, rather than just technical prowess, that ultimately secures the encore.        <p>
-            Attending these presentations was both a privilege and an enlightening experience. The insights shared were not only informative but also inspiring, reinforcing the importance of continuous learning in this field. A heartfelt thank you to the BSidesSF staff, volunteers, presenters, and everyone involved in orchestrating such a remarkable event.        </p>
+            There was also a lot of discussion about the scale of the npm supply chain. With over 140,000 updates happening every day, manual review is impossible. We are seeing a move toward using automated orchestration to maintain supply chain integrity without breaking the speed of development.
         <p>
-            Overall, BSidesSF 2026 served as a compelling reminder that as our systems become more autonomous, our community must become more synchronized. Thank you, BSidesSF, for another outstanding conference. I'm already looking forward to Year 5!
+        <p>
+            Even with the focus on automation, the human element remains the most important part of the event. One session reframed security history as a series of necessary pivots. The takeaway was that maturity is about building the right scaffolding so the next crisis does not require total improvisation. We are finally moving toward designing systems for humans instead of just blaming them for errors.
+        </p>
+            BSidesSF 2026 was a solid reminder that as our systems become more autonomous, our community needs to stay even more synchronized. Sharing notes on everything from sandboxing autonomous agents to orchestrating supply chain integrity is what keeps the industry moving forward.
+        </p>
+        <p>
+            A big thank you to the BSidesSF staff, volunteers, and presenters for putting this all together. I am already looking forward to Year 5.
         </p>
         <img src="./../images/bsidessf_2026.png" alt="BSides San Francisco 2026 conference" loading="lazy" />
 
