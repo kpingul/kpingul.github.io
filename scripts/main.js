@@ -41,9 +41,8 @@
         // Clear the existing content
         blogsContainer.innerHTML = '';
 
-        // Create and append the h2 tag
         const h2Tag = document.createElement('h2');
-        h2Tag.textContent = 'Recent Posts';
+        h2Tag.textContent = 'Blog Posts';
         blogsContainer.appendChild(h2Tag);
 
         for (const blog of blogsToDisplay) {
